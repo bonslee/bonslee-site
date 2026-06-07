@@ -16,6 +16,8 @@
 </head>
 <body>
   <div class="bg-grid"></div>
+  <canvas class="bg-fx" id="fx"></canvas>
+  <div class="spotlight"></div>
   <div class="bg-scan"></div>
   <div class="bg-vignette"></div>
 
@@ -89,6 +91,7 @@
 
   <script src="js/content-data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/fx.js"></script>
   <script>
     // Redirect to the CMS after Netlify Identity login completes
     if (window.netlifyIdentity) {
