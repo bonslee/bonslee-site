@@ -1,0 +1,114 @@
+# Decap CMS config — Bonslee portfolio
+# IMPORTANT: set `repo:` below to your GitHub  username/repo  (e.g. bonslee/bonslee-site)
+backend:
+  name: git-gateway
+  repo: bonslee/bonslee-site
+  branch: main
+
+# Local testing: run `npx decap-server` and visit /admin/ with this enabled.
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://bonslee.com
+display_url: https://bonslee.com
+publish_mode: simple
+
+# Reusable font pickers
+_font_options: &fontopts
+  - Space Grotesk
+  - Inter
+  - Manrope
+  - Sora
+  - Outfit
+  - Poppins
+  - Montserrat
+  - Archivo
+  - Anton
+  - Oswald
+  - Bebas Neue
+  - Syne
+  - Space Mono
+  - JetBrains Mono
+  - IBM Plex Mono
+  - Playfair Display
+
+collections:
+  - name: site
+    label: "Site Content"
+    files:
+      - name: content
+        label: "Portfolio Content"
+        file: "content.json"
+        description: "Everything on the site — text, fonts, sizes, projects."
+        fields:
+          - label: "Theme & Fonts"
+            name: theme
+            widget: object
+            fields:
+              - { label: "Heading font", name: fontFamily, widget: select, options: *fontopts, default: "Space Grotesk" }
+              - { label: "Mono / label font", name: monoFamily, widget: select, options: *fontopts, default: "Space Mono" }
+              - { label: "Accent colour", name: accent, widget: color, default: "#D3FF01" }
+              - { label: "H1 size (px)", name: sizeH1, widget: number, value_type: int, default: 88, min: 24, max: 200 }
+              - { label: "H2 size (px)", name: sizeH2, widget: number, value_type: int, default: 40, min: 16, max: 120 }
+              - { label: "Body size (px)", name: sizeBody, widget: number, value_type: int, default: 18, min: 12, max: 40 }
+              - { label: "Mono/label size (px)", name: sizeMono, widget: number, value_type: int, default: 13, min: 8, max: 28 }
+
+          - label: "Profile"
+            name: profile
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Callsign, name: callsign, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Email, name: email, widget: string }
+              - { label: Phone, name: phone, widget: string }
+              - { label: Behance URL, name: behance, widget: string }
+              - { label: LinkedIn URL, name: linkedin, widget: string }
+              - { label: Tagline, name: tagline, widget: text }
+
+          - label: "HUD Stats"
+            name: hud
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Value, name: value, widget: string }
+              - { label: Unit, name: unit, widget: string }
+
+          - label: "About"
+            name: about
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: "Body font size (px)", name: fontSize, widget: number, value_type: int, default: 18, min: 12, max: 40 }
+              - { label: Body, name: body, widget: text }
+
+          - label: "Experience"
+            name: experience
+            widget: list
+            fields:
+              - { label: Role, name: role, widget: string }
+              - { label: Company, name: company, widget: string }
+              - { label: Place, name: place, widget: string }
+              - { label: Period, name: period, widget: string }
+              - { label: Summary, name: summary, widget: text }
+
+          - label: "Skills"
+            name: skills
+            widget: object
+            fields:
+              - { label: "Core disciplines", name: core, widget: list, field: { label: Skill, name: skill, widget: string } }
+              - { label: "Tools", name: tools, widget: list, field: { label: Tool, name: tool, widget: string } }
+
+          - label: "Projects (Work)"
+            name: projects
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Tag, name: tag, widget: string }
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: "Video (optional, mp4)", name: video, widget: file, required: false }
+              - { label: "Link (Behance / case study)", name: link, widget: string, required: false }
