@@ -123,8 +123,11 @@ function initAnimations() {
 function countUp(scope) {
   scope.querySelectorAll("[data-count]").forEach(node => {
     const raw = node.dataset.count;
+    // Ranges or multi-number values (e.g. "30-50") can't be animated — show as-is
+    const groups = raw.match(/\d+(?:\.\d+)?/g) || [];
+    if (groups.length !== 1) { node.textContent = raw; return; }
     const num = parseFloat(raw.replace(/[^\d.]/g, ""));
-    if (isNaN(num)) return;
+    if (isNaN(num)) { node.textContent = raw; return; }
     const suffix = raw.replace(/[\d.,]/g, "");
     const prefix = (raw.match(/^[^\d]*/) || [""])[0];
     let cur = 0; const steps = 38, inc = num / steps;

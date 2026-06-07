@@ -18,19 +18,19 @@ window.__CONTENT__ = {
     "email": "bonslee.shaji@gmail.com",
     "phone": "+971 50 860 9558",
     "behance": "https://www.behance.net/bonslee",
-    "linkedin": "https://www.linkedin.com/in/bonslee-s-chakkala",
+    "linkedin": "https://www.linkedin.com/in/bonslee-s-chakkala-3a0080b2",
     "tagline": "I turn brands into measurable growth — design that's engineered, not just beautiful."
   },
   "hud": [
-    { "label": "EXPERIENCE", "value": "8+", "unit": "YEARS" },
-    { "label": "SALES LIFT", "value": "618", "unit": "% GREAVES" },
+    { "label": "EXPERIENCE", "value": "9+", "unit": "YEARS" },
+    { "label": "SALES LIFT", "value": "618%", "unit": "GREAVES" },
     { "label": "REACH", "value": "185M", "unit": "GLANCE USERS" },
     { "label": "DAILY CREATIVES", "value": "30-50", "unit": "INMOBI" }
   ],
   "about": {
     "heading": "ABOUT // PILOT PROFILE",
     "fontSize": 18,
-    "body": "Senior multimedia and graphic designer with 8+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients, delivering across events, social, web, and video. I care about design that's measurable, not just beautiful — visual systems that scale and stories that convert."
+    "body": "Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients, delivering across events, social, web, and video. I care about design that's measurable, not just beautiful — visual systems that scale and stories that convert."
   },
   "experience": [
     {
