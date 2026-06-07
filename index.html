@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bonslee S Chakkala — Senior Multimedia Designer · Art Director · UI/UX</title>
+  <meta name="description" content="Portfolio of Bonslee S Chakkala — Senior Multimedia Designer, Art Director and UI/UX & Product Designer in Abu Dhabi. Brand, motion, UI/UX and campaign design." />
+  <meta property="og:title" content="Bonslee S Chakkala — Designer Portfolio" />
+  <meta property="og:description" content="Brand · Motion · UI/UX · Product Design. 8+ years. Abu Dhabi, UAE." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-scan"></div>
+  <div class="bg-vignette"></div>
+
+  <!-- BOOT -->
+  <div id="boot">
+    <div class="boot-ring"></div>
+    <div class="boot-log" id="bootLog">INITIALISING COCKPIT...</div>
+    <div class="boot-bar"><i></i></div>
+  </div>
+
+  <!-- NAV -->
+  <header class="topbar">
+    <div class="brand" id="brandName">BONSLEE // PORTFOLIO</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main class="hero" id="hero"></main>
+
+  <!-- marquee -->
+  <div class="strip"><span class="run">BRAND IDENTITY · MOTION GRAPHICS · UI/UX · PRODUCT DESIGN · ART DIRECTION · CAMPAIGN DESIGN · DESIGN SYSTEMS · &nbsp; BRAND IDENTITY · MOTION GRAPHICS · UI/UX · PRODUCT DESIGN · ART DIRECTION · CAMPAIGN DESIGN · DESIGN SYSTEMS · &nbsp;</span></div>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="sec-head" id="about-head"></div>
+    <div class="panel about-body reveal" id="about-body"></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block" id="experience">
+    <div class="sec-head"><span class="idx">02</span><h2>EXPERIENCE LOG</h2><span class="rule"></span></div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block" id="skills">
+    <div class="sec-head"><span class="idx">03</span><h2>SYSTEMS &amp; LOADOUT</h2><span class="rule"></span></div>
+    <div class="skill-col reveal" style="margin-bottom:30px">
+      <h4>// CORE DISCIPLINES</h4>
+      <div class="chips" id="skills-core"></div>
+    </div>
+    <div class="skill-col reveal">
+      <h4>// TOOLS</h4>
+      <div class="chips" id="skills-tools"></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="block" id="work">
+    <div class="sec-head"><span class="idx">04</span><h2>WORK // ARMORY</h2><span class="rule"></span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact">
+    <div class="panel bk contact-wrap reveal">
+      <div class="mono" style="margin-bottom:14px"><span class="status-dot"></span>COMMS CHANNEL OPEN</div>
+      <h2>LET'S BUILD</h2>
+      <p>Open to Art Director, Creative Director and Senior UI/UX & Product Design roles — Abu Dhabi or remote.</p>
+      <div class="links" id="contact-links"></div>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+
+  <script src="js/content-data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Redirect to the CMS after Netlify Identity login completes
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      });
+    }
+  </script>
+</body>
+</html>
