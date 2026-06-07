@@ -1,0 +1,97 @@
+/* Auto-generated from content.json for file:// double-click preview.
+   Deployed site uses content.json (CMS source of truth). Regenerate with the build note in README. */
+window.__CONTENT__ = {
+  "theme": {
+    "fontFamily": "Space Grotesk",
+    "monoFamily": "Space Mono",
+    "accent": "#D3FF01",
+    "sizeH1": 88,
+    "sizeH2": 40,
+    "sizeBody": 18,
+    "sizeMono": 13
+  },
+  "profile": {
+    "name": "BONSLEE S CHAKKALA",
+    "callsign": "UNIT-01 // PORTFOLIO",
+    "title": "Senior Multimedia Designer · Art Director · UI/UX & Product Designer",
+    "location": "Abu Dhabi, UAE",
+    "email": "bonslee.shaji@gmail.com",
+    "phone": "+971 50 860 9558",
+    "behance": "https://www.behance.net/bonslee",
+    "linkedin": "https://www.linkedin.com/in/bonslee-s-chakkala",
+    "tagline": "I turn brands into measurable growth — design that's engineered, not just beautiful."
+  },
+  "hud": [
+    { "label": "EXPERIENCE", "value": "8+", "unit": "YEARS" },
+    { "label": "SALES LIFT", "value": "618", "unit": "% GREAVES" },
+    { "label": "REACH", "value": "185M", "unit": "GLANCE USERS" },
+    { "label": "DAILY CREATIVES", "value": "30-50", "unit": "INMOBI" }
+  ],
+  "about": {
+    "heading": "ABOUT // PILOT PROFILE",
+    "fontSize": 18,
+    "body": "Senior multimedia and graphic designer with 8+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients, delivering across events, social, web, and video. I care about design that's measurable, not just beautiful — visual systems that scale and stories that convert."
+  },
+  "experience": [
+    {
+      "role": "Senior Multimedia Designer",
+      "company": "Sabha Advertising Company L.L.C",
+      "place": "Abu Dhabi, UAE",
+      "period": "Dec 2024 – Present",
+      "summary": "Lead branding, motion, video and UI/UX for major UAE government and semi-government clients — Abu Dhabi Police, Civil Defence, SEHA, ADNOC, Public Prosecution, Abu Dhabi Chamber, and Abu Dhabi University. End-to-end creative for high-profile events, plus responsive websites and design systems in Figma."
+    },
+    {
+      "role": "Lead Creative Manager",
+      "company": "Greaves Electric Mobility",
+      "place": "Bengaluru, India",
+      "period": "Jan 2022 – Jul 2025",
+      "summary": "Directed branding and campaign design that drove a 618% increase in sales and 245% growth in social reach. Owned the end-to-end creative system across the product portfolio and mentored designers."
+    },
+    {
+      "role": "Executive Graphic Designer",
+      "company": "Avo Automation",
+      "place": "Bengaluru, India",
+      "period": "Sep 2020 – Jan 2022",
+      "summary": "Designed social campaigns and branding for B2B and enterprise technology audiences, maintaining a cohesive visual identity across platforms with cross-functional teams."
+    },
+    {
+      "role": "Creative Designer",
+      "company": "InMobi",
+      "place": "Bengaluru, India",
+      "period": "Feb 2017 – Sep 2020",
+      "summary": "Produced 30–50 high-quality ad creatives daily for premium clients including Samsung and Mi. Contributed creative to Glance, which scaled to 185M+ active users across Asia. Trained junior designers and ran QC."
+    },
+    {
+      "role": "Freelance Graphic Designer",
+      "company": "Self-employed",
+      "place": "Kerala, India",
+      "period": "Mar 2016 – Sep 2020",
+      "summary": "Branding, video editing, motion graphics, social and print for clients across hospitality, construction, architecture, and automotive."
+    },
+    {
+      "role": "Graphic Designer",
+      "company": "OZAP Creative Labs LLP",
+      "place": "Bengaluru, India",
+      "period": "Dec 2016 – Feb 2017",
+      "summary": "Created branding and event design materials that elevated brand presence at events."
+    }
+  ],
+  "skills": {
+    "core": ["Art Direction", "Creative Direction", "Brand Identity & Visual Systems", "Design Systems", "Motion Graphics", "Video Editing", "UI/UX Design", "Product Design", "Web Design", "Campaign Design", "Typography", "Illustration"],
+    "tools": ["After Effects", "Premiere Pro", "Photoshop", "Illustrator", "InDesign", "Figma"]
+  },
+  "projects": [
+    { "title": "CBRN Cinematic Storytelling — AI + Motion Graphics", "tag": "MOTION / AI", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/94209b249366569.Y3JvcCwyODc3LDIyNTEsNDYzLDA.jpg", "link": "https://www.behance.net/gallery/249366569/CBRN-Cinematic-Storytelling-AI-Motion-Graphics", "video": "" },
+    { "title": "Desert Warriors — Cinematic Playing Cards", "tag": "CONCEPT / ART", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/2467dc244482359.Y3JvcCwyODc3LDIyNTEsNTYyLDA.png", "link": "https://www.behance.net/gallery/244482359/DESERT-WARRIORS-Cinematic-Playing-Cards-Concept", "video": "" },
+    { "title": "Zest — Fitness App Brand Identity", "tag": "BRAND / UI", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/cd930e244023579.Y3JvcCwyMjAzLDE3MjMsODk5LDI2MQ.jpg", "link": "https://www.behance.net/gallery/244023579/Zest-Fitness-App-Brand-Identity-Design", "video": "" },
+    { "title": "Zest Fitness App — Social Feature Showcase", "tag": "UI/UX", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/366856240921309.Y3JvcCw5OTksNzgyLDAsMTA4.png", "link": "https://www.behance.net/gallery/240921309/ZEST-Fitness-App-Social-Media-Feature-Showcase", "video": "" },
+    { "title": "Money Transfer Campaign — Speed, Security & Simplicity", "tag": "CAMPAIGN", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/5e5091240890387.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png", "link": "https://www.behance.net/gallery/240890387/Money-Transfer-Campaign-Speed-Security-Simplicity", "video": "" },
+    { "title": "Smart Living — Futuristic Real Estate Series", "tag": "VISUAL SERIES", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/968884240708801.Y3JvcCw3NjUsNTk4LDEyOCwyMTI.png", "link": "https://www.behance.net/gallery/240708801/Smart-Living-A-Futuristic-Real-Estate-Visual-Series", "video": "" },
+    { "title": "Gaming Gear Visual Series", "tag": "PRODUCT / 3D", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/be4534240209175.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png", "link": "https://www.behance.net/gallery/240209175/Gaming-Gear-Visual-Series", "video": "" },
+    { "title": "Neon Streets — Cyberpunk Poster Design", "tag": "ART / POSTER", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/95be90240197793.Y3JvcCw5NjYsNzU2LDQ1LDIyMg.png", "link": "https://www.behance.net/gallery/240197793/Neon-Streets-Cyberpunk-Poster-Design", "video": "" },
+    { "title": "Your Body Speaks — Medical Awareness Series", "tag": "SOCIAL / CAMPAIGN", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/2bc6ef240194321.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png", "link": "https://www.behance.net/gallery/240194321/Your-Body-Speaks-Medical-Awareness-Social-Media-Posts", "video": "" },
+    { "title": "Abu Dhabi International EMS Conference 2025", "tag": "EVENT / BRAND", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/48afbd240134099.Y3JvcCw1ODA0LDQ1NDAsODc2LDA.jpg", "link": "https://www.behance.net/gallery/240134099/Abu-Dhabi-International-EMS-Conference-2025", "video": "" },
+    { "title": "OUD Workshop Branding", "tag": "BRAND", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/e9e782236557141.Y3JvcCwyODc2LDIyNTAsNTYyLDA.jpg", "link": "https://www.behance.net/gallery/236557141/OUD-Workshop-Branding", "video": "" },
+    { "title": "Zakat on Dates Seminar Branding", "tag": "BRAND / EVENT", "image": "https://mir-s3-cdn-cf.behance.net/projects/404/0c5f3f234349187.Y3JvcCw4MDgsNjMyLDAsMA.jpg", "link": "https://www.behance.net/gallery/234349187/Zakat-on-dates-seminar-Branding", "video": "" }
+  ]
+};
