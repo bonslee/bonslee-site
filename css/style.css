@@ -32,7 +32,7 @@ body.js-ready{cursor:none}
 @media (pointer:coarse){body.js-ready{cursor:auto}}
 
 /* ---- HUD background grid + scanlines ---- */
-.bg-grid{position:fixed;inset:0;z-index:-3;
+.bg-grid{position:fixed;inset:0;z-index:-5;
   background:
     radial-gradient(1200px 700px at 70% -10%, rgba(211,255,1,.08), transparent 60%),
     linear-gradient(transparent 0,transparent calc(100% - 1px),rgba(211,255,1,.05) 100%),
@@ -40,6 +40,10 @@ body.js-ready{cursor:none}
   background-size:auto, 100% 46px, 46px 100%;
   background-color:var(--bg);
 }
+.bg-fx{position:fixed;inset:0;z-index:-4;pointer-events:none}
+.spotlight{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(211,255,1,.10),transparent 65%)}
+@media (pointer:coarse){.spotlight{display:none}}
 .bg-scan{position:fixed;inset:0;z-index:-2;pointer-events:none;
   background:repeating-linear-gradient(0deg,rgba(0,0,0,.0) 0 2px,rgba(0,0,0,.22) 2px 4px);
   mix-blend-mode:multiply;opacity:.5;animation:scan 8s linear infinite}
@@ -200,3 +204,27 @@ footer .status-dot{margin-right:6px}
 .strip .run{display:inline-block;padding:12px 0;font-family:var(--mono);font-size:12px;letter-spacing:.3em;
   color:var(--accent);animation:marq 22s linear infinite}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== STUDIO SCENE (animated designer desk) ===== */
+.studio{max-width:1180px;margin:0 auto;padding:50px 26px 6px;position:relative}
+.studio .sec-head{margin-bottom:22px}
+.studio-stage{position:relative;border:1px solid var(--line);background:rgba(8,10,6,.55);overflow:hidden}
+.studio-stage svg{display:block;width:100%;height:auto}
+.studio-stage .cap{position:absolute;right:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--mute)}
+@keyframes dsfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes dsfloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@keyframes dspulse{0%,100%{opacity:.85}50%{opacity:.45}}
+@keyframes dstw{0%,100%{opacity:.2}50%{opacity:1}}
+.studio-stage .flt{transform-box:fill-box;transform-origin:center}
+.studio-stage .i0{animation:dsfloat 4.2s ease-in-out infinite}
+.studio-stage .i1{animation:dsfloat2 5s ease-in-out infinite .3s}
+.studio-stage .i2{animation:dsfloat 4.6s ease-in-out infinite .6s}
+.studio-stage .i3{animation:dsfloat2 5.4s ease-in-out infinite .2s}
+.studio-stage .i4{animation:dsfloat 4.9s ease-in-out infinite .9s}
+.studio-stage .i5{animation:dsfloat2 4.4s ease-in-out infinite .5s}
+.studio-stage .i6{animation:dsfloat 5.2s ease-in-out infinite .1s}
+.studio-stage .scrn{animation:dspulse 3.2s ease-in-out infinite}
+.studio-stage .tw{animation:dstw 2.6s ease-in-out infinite}
+.studio-stage .tw:nth-of-type(2n){animation-duration:3.4s}
+.studio-stage .tw:nth-of-type(3n){animation-duration:2s}
+@media (prefers-reduced-motion:reduce){.studio-stage *{animation:none!important}}
