@@ -324,13 +324,22 @@ window.addEventListener("scroll", cardScale, {passive:true}); window.addEventLis
 (function(){
   const stack=document.getElementById('fallStack'); if(!stack) return;
   const imgs=works.slice(0,10);
+  // Two piles. LEFT fills one-by-one (rows bottom->top: 2,2,1), then RIGHT (rows bottom->top: 3,2).
   const pos=[
-    {l:5,b:6,r:-12,z:1},{l:21,b:50,r:7,z:2},{l:38,b:2,r:-5,z:3},{l:56,b:42,r:12,z:4},{l:72,b:14,r:-9,z:5},
-    {l:12,b:82,r:6,z:6},{l:32,b:110,r:-13,z:7},{l:52,b:88,r:9,z:8},{l:68,b:116,r:-6,z:9},{l:44,b:156,r:3,z:10}
+    {l:4,  b:6,   r:-9, z:2, d:0.00},
+    {l:18, b:10,  r:6,  z:1, d:0.24},
+    {l:8,  b:80,  r:-5, z:4, d:0.48},
+    {l:22, b:86,  r:9,  z:3, d:0.72},
+    {l:13, b:154, r:-8, z:5, d:0.96},
+    {l:57, b:6,   r:7,  z:2, d:1.24},
+    {l:70, b:10,  r:-6, z:1, d:1.48},
+    {l:83, b:8,   r:9,  z:3, d:1.72},
+    {l:64, b:82,  r:-8, z:4, d:1.96},
+    {l:77, b:88,  r:5,  z:5, d:2.20}
   ];
   stack.innerHTML=imgs.map((u,i)=>{const p=pos[i]||pos[0];
-    return `<div class="fall-card" style="left:${p.l}%;bottom:${p.b}px;--r:${p.r}deg;z-index:${p.z};transition-delay:${(i*0.26).toFixed(2)}s"><img src="${u}" loading="lazy" alt=""></div>`;}).join("");
-  const fio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){stack.classList.add('fall');fio.disconnect();}});},{threshold:.2});
+    return `<div class="fall-card" style="left:${p.l}%;bottom:${p.b}px;--r:${p.r}deg;z-index:${p.z};transition-delay:${p.d}s"><img src="${u}" loading="lazy" alt=""></div>`;}).join("");
+  const fio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){stack.classList.add('fall');fio.disconnect();}});},{threshold:.25});
   fio.observe(document.getElementById('about'));
 })();
 
