@@ -65,6 +65,14 @@
   .motion-card:hover .play{transform:translate(-50%,-50%) scale(1.1)}
   .motion-card .play::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-left:18px solid #0C0C0C;border-top:11px solid transparent;border-bottom:11px solid transparent}
   .motion-card .motion-name{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:#fff;font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:.9rem;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent)}
+  /* falling image stack (About) */
+  .fall-stack{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
+  .fall-card{position:absolute;width:clamp(110px,15vw,200px);border-radius:14px;overflow:hidden;
+    box-shadow:0 22px 55px rgba(0,0,0,.6);transform:translateY(-170vh) rotate(var(--r,0deg));
+    transition:transform 1.2s cubic-bezier(.3,1.15,.55,1)}
+  .fall-stack.fall .fall-card{transform:translateY(0) rotate(var(--r,0deg))}
+  .fall-card img{width:100%;display:block}
+  @media(max-width:640px){.fall-card{width:clamp(86px,30vw,140px)}}
   /* fade-in */
   .fade{opacity:0;will-change:transform,opacity;transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
   .fade.fu{transform:translateY(30px)} .fade.fd{transform:translateY(-20px)}
@@ -136,19 +144,13 @@
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section id="about" class="min-h-screen flex flex-col items-center justify-center text-center relative px-5 sm:px-8 md:px-10 py-20 gap-10 sm:gap-14 md:gap-16">
-    <!-- decorative corner works -->
-    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/95be90240197793.Y3JvcCw5NjYsNzU2LDQ1LDIyMg.png" class="fade fl absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px] rounded-2xl object-cover" alt="" />
-    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/be4534240209175.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png" class="fade fl absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px] rounded-2xl object-cover" alt="" />
-    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e9e782236557141.Y3JvcCwyODc2LDIyNTAsNTYyLDA.jpg" class="fade fr absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px] rounded-2xl object-cover" alt="" />
-    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/968884240708801.Y3JvcCw3NjUsNTk4LDEyOCwyMTI.png" class="fade fr absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px] rounded-2xl object-cover" alt="" />
-
-    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(3rem,12vw,160px)">About me</h2>
-
-    <div class="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
+  <section id="about" class="relative min-h-screen overflow-visible px-5 sm:px-8 md:px-10 pt-24 pb-28">
+    <div class="relative z-20 text-center max-w-[720px] mx-auto flex flex-col items-center gap-8 sm:gap-12">
+      <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(3rem,12vw,160px)">About me</h2>
       <p id="aboutText" class="font-medium leading-relaxed max-w-[640px]" style="color:#D7E2EA;font-size:clamp(1rem,2vw,1.35rem)">Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients. I care about design that&apos;s measurable, not just beautiful.</p>
       <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact fade fu rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base">Contact Me</a>
     </div>
+    <div id="fallStack" class="fall-stack"></div>
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
@@ -317,6 +319,20 @@ function cardScale(){
   });
 }
 window.addEventListener("scroll", cardScale, {passive:true}); window.addEventListener("resize", cardScale); cardScale();
+
+/* ---- falling image stack over the About area ---- */
+(function(){
+  const stack=document.getElementById('fallStack'); if(!stack) return;
+  const imgs=works.slice(0,10);
+  const pos=[
+    {l:5,b:6,r:-12,z:1},{l:21,b:50,r:7,z:2},{l:38,b:2,r:-5,z:3},{l:56,b:42,r:12,z:4},{l:72,b:14,r:-9,z:5},
+    {l:12,b:82,r:6,z:6},{l:32,b:110,r:-13,z:7},{l:52,b:88,r:9,z:8},{l:68,b:116,r:-6,z:9},{l:44,b:156,r:3,z:10}
+  ];
+  stack.innerHTML=imgs.map((u,i)=>{const p=pos[i]||pos[0];
+    return `<div class="fall-card" style="left:${p.l}%;bottom:${p.b}px;--r:${p.r}deg;z-index:${p.z};transition-delay:${(i*0.26).toFixed(2)}s"><img src="${u}" loading="lazy" alt=""></div>`;}).join("");
+  const fio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){stack.classList.add('fall');fio.disconnect();}});},{threshold:.2});
+  fio.observe(document.getElementById('about'));
+})();
 
 /* ---- motion & AI cards (placeholders link to Behance until video files are added) ---- */
 const motion=[
