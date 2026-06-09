@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bonslee — 3D &amp; Multimedia Creator</title>
+<meta name="description" content="Bonslee S Chakkala — multimedia & 3D-minded designer. Brand identity, motion, UI/UX and web design." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: { fontFamily: { sans: ['Kanit','sans-serif'] } } } };
+</script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body,#root{background:#0C0C0C;font-family:'Kanit',sans-serif}
+  .wrap{overflow-x:clip}
+  /* preloader (neon B) */
+  .preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  .preloader.hidden{opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s ease}
+  .b-glow{position:absolute;width:min(58vw,58vh,420px);height:min(58vw,58vh,420px);border-radius:50%;
+    background:radial-gradient(circle,rgba(160,255,30,.22),transparent 65%);filter:blur(22px);animation:bAmb 2.2s ease-in-out infinite}
+  .loader-b{position:relative;width:min(72vw,72vh,480px);height:auto;display:block;mix-blend-mode:screen;animation:bPulse 2.2s ease-in-out infinite}
+  @keyframes bPulse{0%,100%{filter:brightness(.72) saturate(1);transform:scale(.98)}50%{filter:brightness(1.45) saturate(1.25);transform:scale(1.02)}}
+  @keyframes bAmb{0%,100%{opacity:.4;transform:scale(.95)}50%{opacity:.9;transform:scale(1.08)}}
+  .b-fallback{position:relative;font-family:'Kanit',sans-serif;font-style:italic;font-weight:800;
+    font-size:min(46vw,46vh,360px);line-height:1;color:#9be000;mix-blend-mode:screen;
+    text-shadow:0 0 18px rgba(160,255,30,.75),0 0 48px rgba(160,255,30,.45),0 0 90px rgba(160,255,30,.3);
+    animation:bPulse 2.2s ease-in-out infinite}
+  .hero-heading{
+    background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .btn-contact{
+    background:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%);
+    box-shadow:0px 4px 4px rgba(181,1,167,.25), 4px 4px 12px #7721B1 inset;
+    outline:2px solid #fff;outline-offset:-3px;
+  }
+  /* fade-in */
+  .fade{opacity:0;will-change:transform,opacity;transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
+  .fade.fu{transform:translateY(30px)} .fade.fd{transform:translateY(-20px)}
+  .fade.fl{transform:translateX(-80px)} .fade.fr{transform:translateX(80px)}
+  .fade.show{opacity:1;transform:none}
+  /* marquee */
+  .mq-row{display:flex;gap:.75rem;will-change:transform}
+  .mq-tile{width:420px;height:270px;flex:0 0 auto;border-radius:1rem;object-fit:cover;background:#141414}
+  /* animated text */
+  #aboutText span.ch{transition:opacity .2s linear}
+  /* sticky cards */
+  .stick{position:sticky}
+</style>
+</head>
+<body>
+<!-- preloader (neon B) -->
+<div class="preloader" id="preloader">
+  <div class="b-glow"></div>
+  <img class="loader-b" id="loaderB" src="neon-b.png" alt="Bonslee" onerror="this.style.display='none';var f=document.getElementById('bFallback');if(f)f.style.display='block'" />
+  <div id="bFallback" class="b-fallback" style="display:none">B</div>
+</div>
+
+<div id="root">
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="h-screen flex flex-col" style="overflow-x:clip">
+    <!-- navbar -->
+    <nav class="fade fd flex justify-between px-6 md:px-10 pt-6 md:pt-8" style="color:#D7E2EA">
+      <a href="#about" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">About</a>
+      <a href="#services" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Services</a>
+      <a href="#projects" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Projects</a>
+      <a href="#contact" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Contact</a>
+    </nav>
+
+    <!-- heading -->
+    <div class="overflow-hidden px-2">
+      <h1 class="hero-heading fade fu font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">Hi, i&apos;m bonslee</h1>
+    </div>
+
+    <!-- portrait / hero artwork -->
+    <div id="magnet" class="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
+      <div class="fade fu" id="magnetInner" style="transition:transform .6s ease-in-out, opacity .7s, transform .7s">
+        <img src="avatar.png" alt="Bonslee — 3D avatar" class="w-full object-contain" style="mix-blend-mode:screen" onerror="this.onerror=null;this.src='https://mir-s3-cdn-cf.behance.net/projects/404/2467dc244482359.Y3JvcCwyODc3LDIyNTEsNTYyLDA.png';this.style.mixBlendMode='normal';this.style.borderRadius='28px'" />
+      </div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="mt-auto flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 relative z-20">
+      <p class="fade fu font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]" style="color:#D7E2EA;font-size:clamp(0.75rem,1.4vw,1.5rem)">a multimedia &amp; 3d-minded designer crafting striking, unforgettable brands and visuals</p>
+      <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact fade fu rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <section id="marquee" class="pt-24 sm:pt-32 md:pt-40 pb-10" style="background:#0C0C0C;overflow:hidden">
+    <div class="flex flex-col gap-3">
+      <div class="mq-row" id="mqRow1"></div>
+      <div class="mq-row" id="mqRow2"></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="min-h-screen flex flex-col items-center justify-center text-center relative px-5 sm:px-8 md:px-10 py-20 gap-10 sm:gap-14 md:gap-16">
+    <!-- decorative corner works -->
+    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/95be90240197793.Y3JvcCw5NjYsNzU2LDQ1LDIyMg.png" class="fade fl absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px] rounded-2xl object-cover" alt="" />
+    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/be4534240209175.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png" class="fade fl absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px] rounded-2xl object-cover" alt="" />
+    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e9e782236557141.Y3JvcCwyODc2LDIyNTAsNTYyLDA.jpg" class="fade fr absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px] rounded-2xl object-cover" alt="" />
+    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/968884240708801.Y3JvcCw3NjUsNTk4LDEyOCwyMTI.png" class="fade fr absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px] rounded-2xl object-cover" alt="" />
+
+    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(3rem,12vw,160px)">About me</h2>
+
+    <div class="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
+      <p id="aboutText" class="font-medium leading-relaxed max-w-[560px]" style="color:#D7E2EA;font-size:clamp(1rem,2vw,1.35rem)">With 9+ years of experience across branding, motion, UI/UX and multimedia design, i help businesses stand out and present their best image — from brand identity to web and integrated campaigns. Let&apos;s build something incredible together!</p>
+      <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact fade fu rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]" style="background:#FFFFFF">
+    <h2 class="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28" style="color:#0C0C0C;font-size:clamp(3rem,12vw,160px)">Services</h2>
+    <div class="max-w-5xl mx-auto" id="serviceList"></div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-5 sm:px-8 md:px-10 pt-20 pb-32" style="background:#0C0C0C">
+    <h2 class="hero-heading font-black uppercase leading-none tracking-tight text-center mb-12 sm:mb-16" style="font-size:clamp(3rem,12vw,160px)">Project</h2>
+    <div id="projectList" class="max-w-6xl mx-auto"></div>
+  </section>
+
+  <!-- ============ CONTACT FOOTER ============ -->
+  <footer id="contact" class="px-6 md:px-10 py-20 text-center" style="background:#0C0C0C;color:#D7E2EA">
+    <p class="font-light uppercase tracking-widest mb-6" style="font-size:clamp(.8rem,1.4vw,1.1rem);opacity:.7">Open to Art Director, Creative Director &amp; Senior UI/UX roles — Abu Dhabi or remote</p>
+    <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact inline-block rounded-full text-white font-medium uppercase tracking-widest px-10 py-4 text-sm md:text-base">Contact Me</a>
+    <div class="mt-8 flex justify-center gap-6 text-sm uppercase tracking-widest" style="opacity:.6">
+      <a href="https://www.behance.net/bonslee" target="_blank" rel="noopener" class="hover:opacity-100">Behance</a>
+      <a href="https://www.linkedin.com/in/bonslee-s-chakkala-3a0080b2" target="_blank" rel="noopener" class="hover:opacity-100">LinkedIn</a>
+      <span>© <span id="yr"></span> Bonslee S Chakkala</span>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+/* ---- preloader: hold >= 4s, fade after load ---- */
+(function(){
+  var pre=document.getElementById('preloader'); if(!pre) return;
+  var MIN_MS=4000, start=Date.now();
+  function hide(){ pre.classList.add('hidden'); }
+  function finish(){ setTimeout(hide, Math.max(0, MIN_MS-(Date.now()-start))); }
+  if(document.readyState==='complete') finish(); else window.addEventListener('load', finish);
+})();
+
+const B = "https://mir-s3-cdn-cf.behance.net/projects/404/";
+const works = [
+  "94209b249366569.Y3JvcCwyODc3LDIyNTEsNDYzLDA.jpg",
+  "2467dc244482359.Y3JvcCwyODc3LDIyNTEsNTYyLDA.png",
+  "cd930e244023579.Y3JvcCwyMjAzLDE3MjMsODk5LDI2MQ.jpg",
+  "366856240921309.Y3JvcCw5OTksNzgyLDAsMTA4.png",
+  "5e5091240890387.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png",
+  "968884240708801.Y3JvcCw3NjUsNTk4LDEyOCwyMTI.png",
+  "be4534240209175.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png",
+  "95be90240197793.Y3JvcCw5NjYsNzU2LDQ1LDIyMg.png",
+  "2bc6ef240194321.Y3JvcCwxMDI0LDgwMCwwLDExMQ.png",
+  "48afbd240134099.Y3JvcCw1ODA0LDQ1NDAsODc2LDA.jpg",
+  "e9e782236557141.Y3JvcCwyODc2LDIyNTAsNTYyLDA.jpg",
+  "0c5f3f234349187.Y3JvcCw4MDgsNjMyLDAsMA.jpg"
+].map(s => B + s);
+
+/* ---- marquee rows (tripled) ---- */
+function fillRow(el, imgs){ const set=[...imgs,...imgs,...imgs]; el.innerHTML = set.map(u=>`<img class="mq-tile" loading="lazy" src="${u}" alt="">`).join(""); }
+fillRow(document.getElementById("mqRow1"), works.slice(0,6));
+fillRow(document.getElementById("mqRow2"), works.slice(6,12));
+const row1=document.getElementById("mqRow1"), row2=document.getElementById("mqRow2"), mqSec=document.getElementById("marquee");
+function mqScroll(){ const top=mqSec.offsetTop; const offset=(window.scrollY - top + window.innerHeight)*0.3;
+  row1.style.transform=`translateX(${offset-200}px)`; row2.style.transform=`translateX(${-(offset-200)}px)`; }
+window.addEventListener("scroll", mqScroll, {passive:true}); window.addEventListener("resize", mqScroll); mqScroll();
+
+/* ---- services ---- */
+const services=[
+  ["01","Brand Identity","Cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable presence across every touchpoint."],
+  ["02","Motion Graphics","Dynamic animation and motion design that adds energy and storytelling to brands, products, events and digital experiences."],
+  ["03","UI/UX Design","Clean, modern, conversion-focused interfaces and design systems with attention to layout, typography and user experience."],
+  ["04","Art Direction","End-to-end creative direction for campaigns, events and content — keeping work on-brand, high-quality and impactful."],
+  ["05","Web Design","Responsive websites and landing pages built in Figma, balancing aesthetics, performance and a frictionless user journey."]
+];
+document.getElementById("serviceList").innerHTML = services.map((s,i)=>`
+  <div class="fade fu flex items-start gap-6 py-8 sm:py-10 md:py-12" style="border-top:1px solid rgba(12,12,12,.15);${i===services.length-1?'border-bottom:1px solid rgba(12,12,12,.15);':''}transition-delay:${i*0.1}s">
+    <div class="font-black" style="color:#0C0C0C;font-size:clamp(3rem,10vw,140px);line-height:.9">${s[0]}</div>
+    <div>
+      <h3 class="font-medium uppercase" style="color:#0C0C0C;font-size:clamp(1rem,2.2vw,2.1rem)">${s[1]}</h3>
+      <p class="font-light leading-relaxed max-w-2xl mt-2" style="color:#0C0C0C;opacity:.6;font-size:clamp(.85rem,1.6vw,1.25rem)">${s[2]}</p>
+    </div>
+  </div>`).join("");
+
+/* ---- projects ---- */
+const projects=[
+  { n:"01", cat:"Brand · UI", name:"Zest — Fitness App Identity", link:"https://www.behance.net/gallery/244023579/Zest-Fitness-App-Brand-Identity-Design",
+    a:works[2], b:works[3], c:works[5] },
+  { n:"02", cat:"Motion · AI", name:"Cinematic & Motion Series", link:"https://www.behance.net/gallery/249366569/CBRN-Cinematic-Storytelling-AI-Motion-Graphics",
+    a:works[0], b:works[1], c:works[7] },
+  { n:"03", cat:"Branding · Events", name:"UAE Government & Events", link:"https://www.behance.net/gallery/240134099/Abu-Dhabi-International-EMS-Conference-2025",
+    a:works[9], b:works[10], c:works[11] }
+];
+document.getElementById("projectList").innerHTML = projects.map((p,i)=>`
+  <div class="proj stick top-24 md:top-32" style="top:${96 + i*28}px;margin-bottom:2rem">
+    <div class="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 p-4 sm:p-6 md:p-8" style="border-color:#D7E2EA;background:#0C0C0C">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4 sm:mb-6">
+        <div class="flex items-center gap-4 sm:gap-6">
+          <span class="hero-heading font-black leading-none" style="font-size:clamp(2.4rem,8vw,110px)">${p.n}</span>
+          <div>
+            <div class="uppercase tracking-widest font-light" style="color:#D7E2EA;opacity:.6;font-size:clamp(.7rem,1.2vw,.95rem)">${p.cat}</div>
+            <div class="font-medium uppercase" style="color:#D7E2EA;font-size:clamp(1rem,2.4vw,1.9rem)">${p.name}</div>
+          </div>
+        </div>
+        <a href="${p.link}" target="_blank" rel="noopener" class="rounded-full border-2 font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base transition-colors hover:bg-[#D7E2EA]/10" style="border-color:#D7E2EA;color:#D7E2EA">Live Project</a>
+      </div>
+      <div class="flex gap-3 sm:gap-4">
+        <div class="w-2/5 flex flex-col gap-3 sm:gap-4">
+          <img src="${p.a}" loading="lazy" class="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style="height:clamp(130px,16vw,230px)" alt="">
+          <img src="${p.b}" loading="lazy" class="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style="height:clamp(160px,22vw,340px)" alt="">
+        </div>
+        <div class="w-3/5">
+          <img src="${p.c}" loading="lazy" class="w-full h-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style="min-height:clamp(310px,40vw,590px)" alt="">
+        </div>
+      </div>
+    </div>
+  </div>`).join("");
+
+/* ---- sticky card scale on scroll ---- */
+const totalCards = projects.length;
+const cards = [...document.querySelectorAll(".proj")];
+function cardScale(){
+  cards.forEach((card,index)=>{
+    const target = 1 - (totalCards - 1 - index) * 0.03;
+    const r = card.getBoundingClientRect();
+    const stickTop = 96 + index*28;
+    let p = 0;
+    if(r.top <= stickTop){ p = Math.min(1, (stickTop - r.top) / (window.innerHeight*0.6)); }
+    const scale = 1 - (1 - target) * p;
+    const inner = card.firstElementChild;
+    inner.style.transform = `scale(${scale})`;
+    inner.style.transformOrigin = "top center";
+  });
+}
+window.addEventListener("scroll", cardScale, {passive:true}); window.addEventListener("resize", cardScale); cardScale();
+
+/* ---- fade-in (whileInView) ---- */
+const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target);} }); }, {rootMargin:"50px", threshold:0});
+document.querySelectorAll(".fade").forEach((el,i)=>{ if(!el.style.transitionDelay){} io.observe(el); });
+/* hero fades fire immediately */
+requestAnimationFrame(()=>{ document.querySelectorAll("section.h-screen .fade").forEach(el=>el.classList.add("show")); });
+
+/* ---- magnet (hero artwork) ---- */
+(function(){
+  const m=document.getElementById("magnet"), inner=document.getElementById("magnetInner");
+  if(matchMedia("(pointer:coarse)").matches) return;
+  const pad=150, strength=3;
+  window.addEventListener("mousemove",(e)=>{
+    const r=m.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height/2;
+    const dx=e.clientX-cx, dy=e.clientY-cy;
+    if(Math.abs(dx)<r.width/2+pad && Math.abs(dy)<r.height/2+pad){
+      inner.style.transition="transform 0.3s ease-out";
+      inner.style.transform=`translate3d(${dx/strength}px,${dy/strength}px,0)`;
+    } else { inner.style.transition="transform 0.6s ease-in-out"; inner.style.transform="translate3d(0,0,0)"; }
+  });
+})();
+
+/* ---- animated text (char reveal on scroll) ---- */
+(function(){
+  const el=document.getElementById("aboutText"); if(!el) return;
+  const text=el.textContent; el.textContent="";
+  const spans=[];
+  for(const c of text){ const s=document.createElement("span"); s.className="ch"; s.style.opacity=".2"; s.textContent=c; el.appendChild(s); spans.push(s); }
+  function upd(){
+    const r=el.getBoundingClientRect(); const vh=window.innerHeight;
+    // progress: 0 when top at 80% vh, 1 when bottom at 20% vh
+    const start=vh*0.8, end=vh*0.2;
+    const prog=Math.max(0,Math.min(1,(start - r.top)/((start-end)+r.height)));
+    const lead=prog*spans.length;
+    spans.forEach((s,i)=>{ s.style.opacity = i < lead ? "1" : (i < lead+6 ? (0.2+0.8*Math.max(0,(lead-i)/6)).toFixed(2) : ".2"); });
+  }
+  window.addEventListener("scroll",upd,{passive:true}); window.addEventListener("resize",upd); upd();
+})();
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
