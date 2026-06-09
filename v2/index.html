@@ -167,7 +167,13 @@
   <section id="motion" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24" style="background:#0C0C0C">
     <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight text-center" style="font-size:clamp(2.5rem,10vw,140px)">Motion &amp; AI</h2>
     <p class="fade fu text-center font-light uppercase tracking-widest mx-auto mt-4 mb-12" style="color:#D7E2EA;opacity:.6;font-size:clamp(.75rem,1.3vw,1rem)">Motion graphics &amp; AI-built films</p>
-    <div id="motionList" class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"></div>
+    <div class="fade fu max-w-[980px] mx-auto">
+      <video controls preload="metadata" playsinline poster="abu-dhabi-police-poster.jpg" class="w-full rounded-2xl" style="display:block;border:1px solid rgba(211,255,1,.2);background:#000">
+        <source src="abu-dhabi-police-motion.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+      <div class="mt-5 font-medium uppercase tracking-widest text-center" style="color:#D7E2EA;font-size:clamp(.85rem,1.6vw,1.2rem)">Abu Dhabi Police — Motion Graphics</div>
+    </div>
   </section>
 
   <!-- ============ BEHANCE BOX ============ -->
@@ -221,12 +227,12 @@ const works = [
   "48afbd240134099.Y3JvcCw1ODA0LDQ1NDAsODc2LDA.jpg",
   "e9e782236557141.Y3JvcCwyODc2LDIyNTAsNTYyLDA.jpg",
   "0c5f3f234349187.Y3JvcCw4MDgsNjMyLDAsMA.jpg"
-].map(s => B + s);
+].map(s => B + s).concat(["eid-gaming.jpg","eid-libraries.jpg","eid-echoes.jpg","eid-line.jpg","eid-sound.jpg"]);
 
 /* ---- marquee rows (tripled) ---- */
 function fillRow(el, imgs){ const set=[...imgs,...imgs,...imgs]; el.innerHTML = set.map(u=>`<img class="mq-tile" loading="lazy" src="${u}" alt="">`).join(""); }
-fillRow(document.getElementById("mqRow1"), works.slice(0,6));
-fillRow(document.getElementById("mqRow2"), works.slice(6,12));
+fillRow(document.getElementById("mqRow1"), works.filter((_,i)=>i%2===0));
+fillRow(document.getElementById("mqRow2"), works.filter((_,i)=>i%2===1));
 const row1=document.getElementById("mqRow1"), row2=document.getElementById("mqRow2"), mqSec=document.getElementById("marquee");
 function mqScroll(){ const top=mqSec.offsetTop; const offset=(window.scrollY - top + window.innerHeight)*0.3;
   row1.style.transform=`translateX(${offset-200}px)`; row2.style.transform=`translateX(${-(offset-200)}px)`; }
@@ -268,12 +274,12 @@ document.getElementById("experienceList").innerHTML = experience.map((e,i)=>`
 
 /* ---- projects ---- */
 const projects=[
-  { n:"01", cat:"Brand · UI", name:"Zest — Fitness App Identity", link:"https://www.behance.net/gallery/244023579/Zest-Fitness-App-Brand-Identity-Design",
-    a:works[2], b:works[3], c:works[5] },
-  { n:"02", cat:"Motion · AI", name:"Cinematic & Motion Series", link:"https://www.behance.net/gallery/249366569/CBRN-Cinematic-Storytelling-AI-Motion-Graphics",
-    a:works[0], b:works[1], c:works[7] },
-  { n:"03", cat:"Branding · Events", name:"UAE Government & Events", link:"https://www.behance.net/gallery/240134099/Abu-Dhabi-International-EMS-Conference-2025",
-    a:works[9], b:works[10], c:works[11] }
+  { n:"01", cat:"Branding · Campaign", name:"Abu Dhabi Cultural Foundation", link:"https://www.behance.net/bonslee",
+    a:works[14], b:works[15], c:works[16] },
+  { n:"02", cat:"Key Art · Poster", name:"Abu Dhabi — Gaming &amp; Libraries", link:"https://www.behance.net/bonslee",
+    a:works[12], b:works[13], c:works[7] },
+  { n:"03", cat:"Brand · UI", name:"Zest — Fitness App Identity", link:"https://www.behance.net/gallery/244023579/Zest-Fitness-App-Brand-Identity-Design",
+    a:works[2], b:works[3], c:works[5] }
 ];
 document.getElementById("projectList").innerHTML = projects.map((p,i)=>`
   <div class="proj stick top-24 md:top-32" style="top:${96 + i*28}px;margin-bottom:2rem">
@@ -321,7 +327,7 @@ window.addEventListener("scroll", cardScale, {passive:true}); window.addEventLis
 /* ---- falling image stack over the About area ---- */
 (function(){
   const stack=document.getElementById('fallStack'); if(!stack) return;
-  const imgs=works.slice(0,10);
+  const imgs=[0,1,4,6,8,9,10,11,12,13].map(i=>works[i]);
   // Cards start above the screen and fall in from the top: LEFT pile (5) one by one, then RIGHT pile (5).
   const pos=[
     {l:3,  t:26, r:-9, z:2, d:0.00},
@@ -340,22 +346,6 @@ window.addEventListener("scroll", cardScale, {passive:true}); window.addEventLis
   const fio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){stack.classList.add('fall');fio.disconnect();}});},{threshold:.18});
   fio.observe(document.getElementById('about'));
 })();
-
-/* ---- motion & AI cards (placeholders link to Behance until video files are added) ---- */
-const motion=[
-  {img:works[0], name:"CBRN Cinematic — AI + Motion", link:"https://www.behance.net/gallery/249366569/CBRN-Cinematic-Storytelling-AI-Motion-Graphics"},
-  {img:works[1], name:"Desert Warriors — Cinematic", link:"https://www.behance.net/gallery/244482359/DESERT-WARRIORS-Cinematic-Playing-Cards-Concept"},
-  {img:works[7], name:"Neon Streets — Cyberpunk", link:"https://www.behance.net/gallery/240197793/Neon-Streets-Cyberpunk-Poster-Design"},
-  {img:works[5], name:"Smart Living — Real Estate", link:"https://www.behance.net/gallery/240708801/Smart-Living-A-Futuristic-Real-Estate-Visual-Series"},
-  {img:works[8], name:"Your Body Speaks — Awareness", link:"https://www.behance.net/gallery/240194321/Your-Body-Speaks-Medical-Awareness-Social-Media-Posts"},
-  {img:works[4], name:"Money Transfer — Campaign", link:"https://www.behance.net/gallery/240890387/Money-Transfer-Campaign-Speed-Security-Simplicity"}
-];
-document.getElementById("motionList").innerHTML = motion.map(m=>`
-  <a href="${m.link}" target="_blank" rel="noopener" class="motion-card fade fu">
-    <img src="${m.img}" loading="lazy" alt="${m.name}">
-    <span class="play"></span>
-    <span class="motion-name">${m.name}</span>
-  </a>`).join("");
 
 /* ---- fade-in (whileInView) ---- */
 const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target);} }); }, {rootMargin:"50px", threshold:0});
