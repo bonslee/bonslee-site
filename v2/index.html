@@ -7,7 +7,7 @@
 <meta name="description" content="Bonslee S Chakkala — multimedia & 3D-minded designer. Brand identity, motion, UI/UX and web design." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = { theme: { extend: { fontFamily: { sans: ['Kanit','sans-serif'] } } } };
@@ -47,6 +47,24 @@
   .svc-card{flex:0 0 auto;width:300px;border:1px solid rgba(211,255,1,.35);border-radius:20px;padding:24px;background:rgba(211,255,1,.04)}
   .svc-card h4{color:#D3FF01;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:1.1rem}
   .svc-card p{color:#D7E2EA;opacity:.72;font-weight:300;margin-top:10px;font-size:.95rem;line-height:1.5}
+  /* stat boxes */
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1180px;margin:0 auto;padding:0 26px}
+  .stat-box{position:relative;background:rgba(18,26,8,.45);border:1px solid rgba(211,255,1,.25);padding:20px 16px}
+  .stat-box::before,.stat-box::after{content:"";position:absolute;width:14px;height:14px;border:2px solid #D3FF01}
+  .stat-box::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .stat-box::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .stat-box .v{font-family:'Space Mono',monospace;font-weight:700;color:#D3FF01;line-height:1;font-size:clamp(1.7rem,3.2vw,2.8rem)}
+  .stat-box .l{font-family:'Space Mono',monospace;margin-top:12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#D3FF01}
+  .stat-box .u{font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#8b937e;margin-top:3px}
+  @media(max-width:900px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+  /* motion & AI cards */
+  .motion-card{position:relative;display:block;overflow:hidden;border-radius:18px;background:#141414;aspect-ratio:16/10}
+  .motion-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2);transition:transform .5s ease,filter .4s ease}
+  .motion-card:hover img{transform:scale(1.06);filter:grayscale(0)}
+  .motion-card .play{position:absolute;top:50%;left:50%;width:64px;height:64px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(211,255,1,.92);transition:transform .25s}
+  .motion-card:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+  .motion-card .play::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-left:18px solid #0C0C0C;border-top:11px solid transparent;border-bottom:11px solid transparent}
+  .motion-card .motion-name{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:#fff;font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:.9rem;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent)}
   /* fade-in */
   .fade{opacity:0;will-change:transform,opacity;transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
   .fade.fu{transform:translateY(30px)} .fade.fd{transform:translateY(-20px)}
@@ -73,9 +91,9 @@
 <div class="wrap">
 
   <!-- ============ HERO ============ -->
-  <section class="h-screen flex flex-col" style="overflow-x:clip">
+  <section class="relative min-h-screen flex flex-col overflow-x-clip pb-12">
     <!-- navbar -->
-    <nav class="fade fd flex justify-between px-6 md:px-10 pt-6 md:pt-8" style="color:#D7E2EA">
+    <nav class="fade fd flex justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-30" style="color:#D7E2EA">
       <a href="#about" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">About</a>
       <a href="#experience" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Experience</a>
       <a href="#projects" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Projects</a>
@@ -83,22 +101,30 @@
     </nav>
 
     <!-- heading -->
-    <div class="overflow-hidden px-2">
-      <h1 class="hero-heading fade fu font-black uppercase tracking-tight leading-[0.9] w-full text-center text-[11vw] sm:text-[11vw] md:text-[12vw] lg:text-[12vw] mt-6 sm:mt-4 md:-mt-5">Hi, i&apos;m<br>bonslee</h1>
+    <div class="px-2 relative z-10 mt-6 sm:mt-6 md:mt-8">
+      <h1 class="hero-heading fade fu font-black uppercase tracking-tight leading-[0.9] w-full text-center text-[12vw] sm:text-[12vw] md:text-[12.5vw] lg:text-[12.5vw]">Hi, i&apos;m<br>bonslee</h1>
     </div>
 
-    <!-- portrait / hero artwork -->
-    <div id="magnet" class="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
-      <div class="fade fu" id="magnetInner" style="transition:transform .6s ease-in-out, opacity .7s, transform .7s">
+    <!-- avatar: pulled up so the hair overlaps BONSLEE (magnetic) -->
+    <div id="magnet" class="relative z-20 mx-auto pointer-events-none -mt-[11vw] sm:-mt-[10vw] md:-mt-[9vw] lg:-mt-[8vw] w-[230px] sm:w-[300px] md:w-[370px] lg:w-[430px]">
+      <div class="fade fu" id="magnetInner" style="transition:transform .6s ease-in-out, opacity .7s">
         <img src="avatar.png" alt="Bonslee — 3D avatar" class="w-full object-contain" style="mix-blend-mode:screen" onerror="this.onerror=null;this.src='https://mir-s3-cdn-cf.behance.net/projects/404/2467dc244482359.Y3JvcCwyODc3LDIyNTEsNTYyLDA.png';this.style.mixBlendMode='normal';this.style.borderRadius='28px'" />
       </div>
     </div>
 
-    <!-- bottom bar -->
-    <div class="mt-auto flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 relative z-20">
-      <p class="fade fu font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]" style="color:#D7E2EA;font-size:clamp(0.75rem,1.4vw,1.5rem)">a multimedia &amp; 3d-minded designer crafting striking, unforgettable brands and visuals</p>
-      <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact fade fu rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base">Contact Me</a>
+    <!-- stat boxes under the avatar -->
+    <div class="relative z-20 mt-2 sm:mt-4">
+      <div class="stat-row">
+        <div class="stat-box fade fu"><div class="v">9+</div><div class="l">Experience</div><div class="u">Years</div></div>
+        <div class="stat-box fade fu"><div class="v">618%</div><div class="l">Sales Lift</div><div class="u">Greaves</div></div>
+        <div class="stat-box fade fu"><div class="v">185M</div><div class="l">Reach</div><div class="u">Glance Users</div></div>
+        <div class="stat-box fade fu"><div class="v">B2B</div><div class="l">Enterprise Branding</div><div class="u">Avo Automation</div></div>
+        <div class="stat-box fade fu"><div class="v">15+</div><div class="l">Gov Clients</div><div class="u">Sabha · Now</div></div>
+      </div>
     </div>
+
+    <!-- tagline -->
+    <p class="fade fu text-center font-light uppercase tracking-wide mx-auto mt-8 max-w-[640px] px-6" style="color:#D7E2EA;opacity:.75;font-size:clamp(.72rem,1.2vw,1.05rem)">Senior Multimedia Designer · Art Director · Creative Director · UI/UX &amp; Product Designer</p>
   </section>
 
   <!-- ============ MARQUEE ============ -->
@@ -120,7 +146,7 @@
     <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(3rem,12vw,160px)">About me</h2>
 
     <div class="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
-      <p id="aboutText" class="font-medium leading-relaxed max-w-[560px]" style="color:#D7E2EA;font-size:clamp(1rem,2vw,1.35rem)">With 9+ years of experience across branding, motion, UI/UX and multimedia design, i help businesses stand out and present their best image — from brand identity to web and integrated campaigns. Let&apos;s build something incredible together!</p>
+      <p id="aboutText" class="font-medium leading-relaxed max-w-[640px]" style="color:#D7E2EA;font-size:clamp(1rem,2vw,1.35rem)">Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients. I care about design that&apos;s measurable, not just beautiful.</p>
       <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact fade fu rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base">Contact Me</a>
     </div>
   </section>
@@ -137,10 +163,19 @@
     <div id="projectList" class="max-w-6xl mx-auto"></div>
   </section>
 
-  <!-- ============ ABOUT (closing) ============ -->
-  <section id="about2" class="px-5 sm:px-8 md:px-10 pt-20 pb-8 text-center" style="background:#0C0C0C">
-    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(2.5rem,9vw,120px)">About</h2>
-    <p class="fade fu font-medium leading-relaxed max-w-[680px] mx-auto mt-8" style="color:#D7E2EA;font-size:clamp(1rem,1.8vw,1.3rem)">Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients. I care about design that&apos;s measurable, not just beautiful.</p>
+  <!-- ============ MOTION & AI ============ -->
+  <section id="motion" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24" style="background:#0C0C0C">
+    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight text-center" style="font-size:clamp(2.5rem,10vw,140px)">Motion &amp; AI</h2>
+    <p class="fade fu text-center font-light uppercase tracking-widest mx-auto mt-4 mb-12" style="color:#D7E2EA;opacity:.6;font-size:clamp(.75rem,1.3vw,1rem)">Motion graphics &amp; AI-built films</p>
+    <div id="motionList" class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"></div>
+  </section>
+
+  <!-- ============ BEHANCE BOX ============ -->
+  <section class="px-5 sm:px-8 md:px-10 pb-16" style="background:#0C0C0C">
+    <a href="https://www.behance.net/bonslee" target="_blank" rel="noopener" class="block max-w-6xl mx-auto rounded-[30px] border-2 p-8 sm:p-12 text-center transition-colors hover:bg-[#D3FF01]/5" style="border-color:#D3FF01">
+      <div class="font-medium uppercase tracking-widest" style="color:#D3FF01;font-size:clamp(1.1rem,2.6vw,2rem)">See all my work on Behance ↗</div>
+      <div class="font-light uppercase tracking-widest mt-2" style="color:#D7E2EA;opacity:.6;font-size:clamp(.75rem,1.2vw,1rem)">behance.net/bonslee</div>
+    </a>
   </section>
 
   <!-- ============ SERVICES CAROUSEL ============ -->
@@ -199,11 +234,15 @@ window.addEventListener("scroll", mqScroll, {passive:true}); window.addEventList
 
 /* ---- services ---- */
 const services=[
-  ["01","Brand Identity","Cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable presence across every touchpoint."],
-  ["02","Motion Graphics","Dynamic animation and motion design that adds energy and storytelling to brands, products, events and digital experiences."],
-  ["03","UI/UX Design","Clean, modern, conversion-focused interfaces and design systems with attention to layout, typography and user experience."],
-  ["04","Art Direction","End-to-end creative direction for campaigns, events and content — keeping work on-brand, high-quality and impactful."],
-  ["05","Web Design","Responsive websites and landing pages built in Figma, balancing aesthetics, performance and a frictionless user journey."]
+  ["01","Brand Identity","Cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable presence."],
+  ["02","Motion Graphics","Dynamic animation and motion design that adds energy and storytelling to brands, products and events."],
+  ["03","AI-Assisted Creative","AI-driven concepts, imagery and film — blending generative tools with hands-on craft for fresh, scalable visuals."],
+  ["04","UI/UX Design","Clean, modern, conversion-focused interfaces and design systems with attention to layout and user experience."],
+  ["05","Art Direction","End-to-end creative direction for campaigns, events and content — keeping work on-brand and impactful."],
+  ["06","Video Editing","Editing and post for social, events and campaigns — pacing, colour and sound that keep viewers watching."],
+  ["07","Web Design","Responsive websites and landing pages built in Figma, balancing aesthetics, performance and a frictionless journey."],
+  ["08","Design Systems","Reusable component libraries and brand guidelines that keep teams consistent and shipping fast."],
+  ["09","Campaign & Social","Integrated campaign and social media design that turns brand goals into scroll-stopping, on-message creative."]
 ];
 /* services -> auto-running carousel of cards */
 const svcCards = services.map(s=>`<div class="svc-card"><h4>${s[1]}</h4><p>${s[2]}</p></div>`).join("");
@@ -278,6 +317,22 @@ function cardScale(){
   });
 }
 window.addEventListener("scroll", cardScale, {passive:true}); window.addEventListener("resize", cardScale); cardScale();
+
+/* ---- motion & AI cards (placeholders link to Behance until video files are added) ---- */
+const motion=[
+  {img:works[0], name:"CBRN Cinematic — AI + Motion", link:"https://www.behance.net/gallery/249366569/CBRN-Cinematic-Storytelling-AI-Motion-Graphics"},
+  {img:works[1], name:"Desert Warriors — Cinematic", link:"https://www.behance.net/gallery/244482359/DESERT-WARRIORS-Cinematic-Playing-Cards-Concept"},
+  {img:works[7], name:"Neon Streets — Cyberpunk", link:"https://www.behance.net/gallery/240197793/Neon-Streets-Cyberpunk-Poster-Design"},
+  {img:works[5], name:"Smart Living — Real Estate", link:"https://www.behance.net/gallery/240708801/Smart-Living-A-Futuristic-Real-Estate-Visual-Series"},
+  {img:works[8], name:"Your Body Speaks — Awareness", link:"https://www.behance.net/gallery/240194321/Your-Body-Speaks-Medical-Awareness-Social-Media-Posts"},
+  {img:works[4], name:"Money Transfer — Campaign", link:"https://www.behance.net/gallery/240890387/Money-Transfer-Campaign-Speed-Security-Simplicity"}
+];
+document.getElementById("motionList").innerHTML = motion.map(m=>`
+  <a href="${m.link}" target="_blank" rel="noopener" class="motion-card fade fu">
+    <img src="${m.img}" loading="lazy" alt="${m.name}">
+    <span class="play"></span>
+    <span class="motion-name">${m.name}</span>
+  </a>`).join("");
 
 /* ---- fade-in (whileInView) ---- */
 const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target);} }); }, {rootMargin:"50px", threshold:0});
