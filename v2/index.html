@@ -35,10 +35,18 @@
     -webkit-text-fill-color:transparent;color:transparent;
   }
   .btn-contact{
-    background:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%);
-    box-shadow:0px 4px 4px rgba(181,1,167,.25), 4px 4px 12px #7721B1 inset;
-    outline:2px solid #fff;outline-offset:-3px;
+    background:#D3FF01;color:#0C0C0C !important;
+    box-shadow:0 6px 22px rgba(211,255,1,.28);outline:none;
+    transition:transform .2s ease,box-shadow .2s ease;
   }
+  .btn-contact:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(211,255,1,.42)}
+  /* services carousel */
+  .svc-track{display:flex;gap:1rem;width:max-content;animation:svcRun 32s linear infinite}
+  .svc-track:hover{animation-play-state:paused}
+  @keyframes svcRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .svc-card{flex:0 0 auto;width:300px;border:1px solid rgba(211,255,1,.35);border-radius:20px;padding:24px;background:rgba(211,255,1,.04)}
+  .svc-card h4{color:#D3FF01;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:1.1rem}
+  .svc-card p{color:#D7E2EA;opacity:.72;font-weight:300;margin-top:10px;font-size:.95rem;line-height:1.5}
   /* fade-in */
   .fade{opacity:0;will-change:transform,opacity;transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
   .fade.fu{transform:translateY(30px)} .fade.fd{transform:translateY(-20px)}
@@ -69,14 +77,14 @@
     <!-- navbar -->
     <nav class="fade fd flex justify-between px-6 md:px-10 pt-6 md:pt-8" style="color:#D7E2EA">
       <a href="#about" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">About</a>
-      <a href="#services" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Services</a>
+      <a href="#experience" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Experience</a>
       <a href="#projects" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Projects</a>
       <a href="#contact" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Contact</a>
     </nav>
 
     <!-- heading -->
     <div class="overflow-hidden px-2">
-      <h1 class="hero-heading fade fu font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">Hi, i&apos;m bonslee</h1>
+      <h1 class="hero-heading fade fu font-black uppercase tracking-tight leading-[0.9] w-full text-center text-[11vw] sm:text-[11vw] md:text-[12vw] lg:text-[12vw] mt-6 sm:mt-4 md:-mt-5">Hi, i&apos;m<br>bonslee</h1>
     </div>
 
     <!-- portrait / hero artwork -->
@@ -117,16 +125,27 @@
     </div>
   </section>
 
-  <!-- ============ SERVICES ============ -->
-  <section id="services" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]" style="background:#FFFFFF">
-    <h2 class="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28" style="color:#0C0C0C;font-size:clamp(3rem,12vw,160px)">Services</h2>
-    <div class="max-w-5xl mx-auto" id="serviceList"></div>
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]" style="background:#FFFFFF">
+    <h2 class="font-black uppercase text-center mb-12 sm:mb-16 md:mb-20" style="color:#0C0C0C;font-size:clamp(3rem,12vw,160px)">Experience</h2>
+    <div class="max-w-5xl mx-auto" id="experienceList"></div>
   </section>
 
   <!-- ============ PROJECTS ============ -->
   <section id="projects" class="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-5 sm:px-8 md:px-10 pt-20 pb-32" style="background:#0C0C0C">
     <h2 class="hero-heading font-black uppercase leading-none tracking-tight text-center mb-12 sm:mb-16" style="font-size:clamp(3rem,12vw,160px)">Project</h2>
     <div id="projectList" class="max-w-6xl mx-auto"></div>
+  </section>
+
+  <!-- ============ ABOUT (closing) ============ -->
+  <section id="about2" class="px-5 sm:px-8 md:px-10 pt-20 pb-8 text-center" style="background:#0C0C0C">
+    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(2.5rem,9vw,120px)">About</h2>
+    <p class="fade fu font-medium leading-relaxed max-w-[680px] mx-auto mt-8" style="color:#D7E2EA;font-size:clamp(1rem,1.8vw,1.3rem)">Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients. I care about design that&apos;s measurable, not just beautiful.</p>
+  </section>
+
+  <!-- ============ SERVICES CAROUSEL ============ -->
+  <section class="py-10 sm:py-14" style="background:#0C0C0C;overflow:hidden">
+    <div class="svc-track" id="svcTrack"></div>
   </section>
 
   <!-- ============ CONTACT FOOTER ============ -->
@@ -186,12 +205,25 @@ const services=[
   ["04","Art Direction","End-to-end creative direction for campaigns, events and content — keeping work on-brand, high-quality and impactful."],
   ["05","Web Design","Responsive websites and landing pages built in Figma, balancing aesthetics, performance and a frictionless user journey."]
 ];
-document.getElementById("serviceList").innerHTML = services.map((s,i)=>`
-  <div class="fade fu flex items-start gap-6 py-8 sm:py-10 md:py-12" style="border-top:1px solid rgba(12,12,12,.15);${i===services.length-1?'border-bottom:1px solid rgba(12,12,12,.15);':''}transition-delay:${i*0.1}s">
-    <div class="font-black" style="color:#0C0C0C;font-size:clamp(3rem,10vw,140px);line-height:.9">${s[0]}</div>
+/* services -> auto-running carousel of cards */
+const svcCards = services.map(s=>`<div class="svc-card"><h4>${s[1]}</h4><p>${s[2]}</p></div>`).join("");
+document.getElementById("svcTrack").innerHTML = svcCards + svcCards;
+
+/* experience timeline (replaces the services section) */
+const experience=[
+  ["Dec 2024 – Present","Senior Multimedia Designer","Sabha Advertising — Abu Dhabi, UAE","Lead branding, motion, video and UI/UX for major UAE government and semi-government clients — Abu Dhabi Police, Civil Defence, SEHA, ADNOC, Public Prosecution, Abu Dhabi Chamber and Abu Dhabi University. End-to-end creative for high-profile events, plus responsive websites and design systems in Figma."],
+  ["Jan 2022 – Jul 2025","Lead Creative Manager","Greaves Electric Mobility — Bengaluru, India","Directed branding and campaign design that drove a 618% increase in sales and 245% growth in social reach. Owned the end-to-end creative system across the product portfolio and mentored designers."],
+  ["Sep 2020 – Jan 2022","Executive Graphic Designer","Avo Automation — Bengaluru, India","Designed social campaigns and branding for B2B and enterprise technology audiences, maintaining a cohesive visual identity across platforms with cross-functional teams."],
+  ["Feb 2017 – Sep 2020","Creative Designer","InMobi — Bengaluru, India","Produced 30–50 high-quality ad creatives daily for premium clients including Samsung and Mi. Contributed creative to Glance, which scaled to 185M+ active users across Asia. Trained junior designers and ran QC."],
+  ["Mar 2016 – Sep 2020","Freelance Graphic Designer","Self-employed — Kerala, India","Branding, video editing, motion graphics, social and print for clients across hospitality, construction, architecture and automotive."],
+  ["Dec 2016 – Feb 2017","Graphic Designer","OZAP Creative Labs — Bengaluru, India","Created branding and event design materials that elevated brand presence at events."]
+];
+document.getElementById("experienceList").innerHTML = experience.map((e,i)=>`
+  <div class="fade fu grid md:grid-cols-[200px_1fr] gap-1 md:gap-8 py-8 sm:py-10" style="border-top:1px solid rgba(12,12,12,.15);${i===experience.length-1?'border-bottom:1px solid rgba(12,12,12,.15);':''}transition-delay:${i*0.07}s">
+    <div class="font-medium uppercase tracking-wide" style="color:#0C0C0C;opacity:.55;font-size:clamp(.8rem,1.3vw,1rem)">${e[0]}</div>
     <div>
-      <h3 class="font-medium uppercase" style="color:#0C0C0C;font-size:clamp(1rem,2.2vw,2.1rem)">${s[1]}</h3>
-      <p class="font-light leading-relaxed max-w-2xl mt-2" style="color:#0C0C0C;opacity:.6;font-size:clamp(.85rem,1.6vw,1.25rem)">${s[2]}</p>
+      <h3 class="font-medium uppercase" style="color:#0C0C0C;font-size:clamp(1.1rem,2.3vw,1.9rem)">${e[1]} <span style="opacity:.5;font-weight:300;text-transform:none">// ${e[2]}</span></h3>
+      <p class="font-light leading-relaxed max-w-3xl mt-2" style="color:#0C0C0C;opacity:.65;font-size:clamp(.85rem,1.5vw,1.15rem)">${e[3]}</p>
     </div>
   </div>`).join("");
 
