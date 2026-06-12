@@ -1,204 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonslee S Chakkala — Senior Multimedia Designer · Art Director · UI/UX</title>
-  <meta name="description" content="Portfolio of Bonslee S Chakkala — Senior Multimedia Designer, Art Director and UI/UX & Product Designer in Abu Dhabi. Brand, motion, UI/UX and campaign design." />
-  <meta property="og:title" content="Bonslee S Chakkala — Designer Portfolio" />
-  <meta property="og:description" content="Brand · Motion · UI/UX · Product Design. 8+ years. Abu Dhabi, UAE." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bonslee — 3D &amp; Multimedia Creator</title>
+<meta name="description" content="Bonslee S Chakkala — multimedia & 3D-minded designer. Brand identity, motion, UI/UX and web design." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: { fontFamily: { sans: ['Kanit','sans-serif'] } } } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#070809}
+  html,body,#root{font-family:'Kanit',sans-serif}
+  body,#root{background:transparent}
+  #waterbg{position:fixed;inset:0;z-index:-1;background:#070809 url('assets/water-bg.jpg') center/cover no-repeat}
+  .wrap{overflow-x:clip}
+  /* preloader (neon B) */
+  .preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  .preloader.hidden{opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s ease}
+  .loader-video{width:min(78vw,78vh,560px);height:auto;aspect-ratio:1/1;object-fit:contain;display:block;mix-blend-mode:screen}
+  .hero-heading{
+    background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .lime-grad{
+    background:linear-gradient(180deg,#e6ff66 0%,#aacc00 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .btn-contact{
+    background:#D3FF01;color:#0C0C0C !important;
+    box-shadow:0 6px 22px rgba(211,255,1,.28);outline:none;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .btn-contact:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(211,255,1,.42)}
+  /* services carousel */
+  .svc-track{display:flex;gap:1rem;width:max-content;animation:svcRun 32s linear infinite}
+  .svc-track:hover{animation-play-state:paused}
+  @keyframes svcRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .svc-card{flex:0 0 auto;width:300px;border:1px solid rgba(211,255,1,.35);border-radius:20px;padding:24px;background:rgba(211,255,1,.04)}
+  .svc-card h4{color:#D3FF01;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:1.1rem}
+  .svc-card p{color:#D7E2EA;opacity:.72;font-weight:300;margin-top:10px;font-size:.95rem;line-height:1.5}
+  /* stat boxes */
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1180px;margin:0 auto;padding:0 26px}
+  .stat-box{position:relative;background:rgba(211,255,1,.04);border:1px solid rgba(211,255,1,.22);border-radius:20px;padding:24px 22px;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+  .stat-box:hover{transform:translateY(-4px);border-color:rgba(211,255,1,.5);background:rgba(211,255,1,.07)}
+  .stat-box .v{font-family:'Kanit',sans-serif;font-weight:800;color:#D3FF01;line-height:1;font-size:clamp(1.9rem,3.4vw,3rem)}
+  .stat-box .l{margin-top:14px;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+  .stat-box .u{font-weight:300;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#9a9a9a;margin-top:4px}
+  @media(max-width:900px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+  /* motion & AI cards */
+  .motion-card{position:relative;display:block;overflow:hidden;border-radius:18px;background:#141414;aspect-ratio:16/10}
+  .motion-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2);transition:transform .5s ease,filter .4s ease}
+  .motion-card:hover img{transform:scale(1.06);filter:grayscale(0)}
+  .motion-card .play{position:absolute;top:50%;left:50%;width:64px;height:64px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(211,255,1,.92);transition:transform .25s}
+  .motion-card:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+  .motion-card .play::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-left:18px solid #0C0C0C;border-top:11px solid transparent;border-bottom:11px solid transparent}
+  .motion-card .motion-name{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:#fff;font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:.9rem;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent)}
+  /* falling image stack (About) */
+  .fall-stack{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+  .fall-card{position:absolute;width:clamp(110px,15vw,200px);transition:transform .55s cubic-bezier(.22,1,.36,1)}
+  .fc-fall{border-radius:14px;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.6);
+    transform:translateY(-170vh) rotate(var(--r,0deg));transition:transform 1.2s cubic-bezier(.3,1.15,.55,1)}
+  .fall-stack.fall .fc-fall{transform:translateY(0) rotate(var(--r,0deg))}
+  .fc-fall img{width:100%;display:block}
+  .fall-card.floating .fc-fall{animation:cardBob var(--fdur,7s) ease-in-out var(--fdelay,0s) infinite}
+  @keyframes cardBob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-11px) rotate(calc(var(--r,0deg) + 1.2deg))}}
+  @media(max-width:640px){.fall-card{width:clamp(86px,30vw,140px)}}
+  /* fade-in */
+  .fade{opacity:0;will-change:transform,opacity;transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1)}
+  .fade.fu{transform:translateY(30px)} .fade.fd{transform:translateY(-20px)}
+  .fade.fl{transform:translateX(-80px)} .fade.fr{transform:translateX(80px)}
+  .fade.show{opacity:1;transform:none}
+  /* marquee */
+  .mq-row{display:flex;gap:.75rem;width:max-content;will-change:transform}
+  #mqRow1{animation:mqL 48s linear infinite}
+  #mqRow2{animation:mqR 48s linear infinite}
+  @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
+  @keyframes mqR{from{transform:translateX(-33.333%)}to{transform:translateX(0)}}
+  .mq-tile{width:420px;height:270px;flex:0 0 auto;border-radius:1rem;object-fit:cover;background:#141414}
+  /* skill belt (running ticker) */
+  .skill-belt{background:#0C0C0C;border-top:1px solid rgba(211,255,1,.35);border-bottom:1px solid rgba(211,255,1,.35);overflow:hidden;padding:18px 0;margin-bottom:clamp(1.5rem,4vw,3rem)}
+  .skill-track{display:flex;align-items:center;width:max-content;white-space:nowrap;animation:skillRun 34s linear infinite;will-change:transform}
+  .skill-belt:hover .skill-track{animation-play-state:paused}
+  @keyframes skillRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .skill-track .sk{font-family:'Kanit',sans-serif;text-transform:uppercase;font-weight:800;letter-spacing:.02em;line-height:1;font-size:clamp(1.05rem,2vw,1.7rem);padding:0 .6rem;color:#D3FF01}
+  .skill-track .sk.alt{color:transparent;-webkit-text-stroke:1.2px #D3FF01;text-stroke:1.2px #D3FF01}
+  .skill-track .star{color:#D3FF01;opacity:.85;font-size:clamp(.7rem,1.2vw,1rem);padding:0 .1rem}
+  /* animated text */
+  #aboutText span.ch{transition:opacity .2s linear}
+  /* sticky cards */
+  .stick{position:sticky}
+</style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <canvas class="bg-fx" id="fx"></canvas>
-  <div class="spotlight"></div>
-  <div class="bg-scan"></div>
-  <div class="bg-vignette"></div>
+<!-- rippling water background -->
+<div id="waterbg"></div>
+<!-- preloader (neon B) -->
+<div class="preloader" id="preloader">
+  <video class="loader-video" id="loaderVideo" autoplay muted playsinline loop poster="neon-b.png">
+    <source src="neonb-loader.mp4" type="video/mp4" />
+  </video>
+</div>
 
-  <!-- BOOT -->
-  <div id="boot">
-    <div class="boot-ring"></div>
-    <div class="boot-log" id="bootLog">INITIALISING COCKPIT...</div>
-    <div class="boot-bar"><i></i></div>
-  </div>
+<div id="root">
+<div class="wrap">
 
-  <!-- NAV -->
-  <header class="topbar">
-    <div class="brand" id="brandName">BONSLEE // PORTFOLIO</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+  <!-- ============ HERO ============ -->
+  <section class="relative min-h-screen flex flex-col overflow-x-clip pb-12">
+    <!-- navbar -->
+    <nav class="fade fd flex justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-30" style="color:#D7E2EA">
+      <a href="#about" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">About</a>
+      <a href="#experience" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Experience</a>
+      <a href="#projects" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Projects</a>
+      <a href="#contact" class="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Contact</a>
     </nav>
-  </header>
 
-  <!-- HERO -->
-  <main class="hero" id="hero"></main>
+    <!-- hero content: vertically centered in the remaining space -->
+    <div class="flex-1 flex flex-col justify-center pb-4">
 
-  <!-- marquee -->
-  <div class="strip"><span class="run">BRAND IDENTITY · MOTION GRAPHICS · UI/UX · PRODUCT DESIGN · ART DIRECTION · CAMPAIGN DESIGN · DESIGN SYSTEMS · &nbsp; BRAND IDENTITY · MOTION GRAPHICS · UI/UX · PRODUCT DESIGN · ART DIRECTION · CAMPAIGN DESIGN · DESIGN SYSTEMS · &nbsp;</span></div>
+    <!-- heading: group centered on page; HEY + HERE left-aligned to each other -->
+    <div class="relative z-10 px-6 md:px-10 flex justify-center">
+      <div class="inline-block text-left">
+        <div class="lime-grad fade fu font-black uppercase tracking-tight leading-[0.9] text-[11vw] sm:text-[10vw] md:text-[9vw]">Hey, Bonslee</div>
+        <div class="flex items-center justify-start leading-[0.85] -mt-1 sm:-mt-2">
+          <span class="lime-grad fade fu font-black uppercase tracking-tight text-[15vw] sm:text-[13vw] md:text-[12vw] lg:text-[11vw]">Here</span>
+          <div id="magnet" class="relative z-20 pointer-events-none shrink-0 -ml-[2vw] w-[30vw] sm:w-[24vw] md:w-[20vw] lg:w-[18vw] max-w-[320px]">
+            <div class="fade fu" id="magnetInner" style="transition:transform .6s ease-in-out, opacity .7s">
+              <img src="avatar-loop.webp" alt="Bonslee — 3D avatar" class="w-full object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- STUDIO SCENE -->
-  <section class="studio reveal" id="studio">
-    <div class="sec-head"><span class="idx">//</span><h2>THE STUDIO</h2><span class="rule"></span></div>
-    <div class="studio-stage" id="dsWrap">
-      <svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="dsAmb" cx="50%" cy="38%" r="55%">
-            <stop offset="0%" stop-color="#D3FF01" stop-opacity=".22"/>
-            <stop offset="45%" stop-color="#D3FF01" stop-opacity=".06"/>
-            <stop offset="100%" stop-color="#D3FF01" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="dsScr" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#eaffa0"/><stop offset="100%" stop-color="#D3FF01"/>
-          </linearGradient>
-          <linearGradient id="dsFloor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#0c1004"/><stop offset="100%" stop-color="#050605"/>
-          </linearGradient>
-          <filter id="dsGlow" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="dsSoft" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="12"/></filter>
-        </defs>
-        <rect width="1000" height="660" fill="#050605"/>
-        <rect x="0" y="430" width="1000" height="230" fill="url(#dsFloor)"/>
-        <ellipse cx="500" cy="250" rx="520" ry="320" fill="url(#dsAmb)"/>
-        <g id="dsParallax">
-          <g fill="none" stroke="#D3FF01" stroke-width="3" filter="url(#dsGlow)">
-            <g class="flt i0" transform="translate(300,150)"><circle r="34" stroke-opacity=".9"/><circle cx="0" cy="-6" r="9"/><path d="M-7 6 q7 12 14 0" stroke-linecap="round"/><line x1="-5" y1="14" x2="5" y2="14" stroke-linecap="round"/></g>
-            <g class="flt i1" transform="translate(405,120)"><rect x="-36" y="-28" width="72" height="56" rx="12" stroke-opacity=".9"/><path d="M-14 -6 l-10 10 l10 10 M14 -6 l10 10 l-10 10" stroke-linecap="round" stroke-linejoin="round"/></g>
-            <g class="flt i2" transform="translate(510,150)"><rect x="-34" y="-30" width="68" height="60" rx="10" stroke-opacity=".9"/><circle cx="-8" cy="-8" r="7"/><path d="M-26 22 l18 -20 l12 12 l10 -8 l12 16" stroke-linecap="round" stroke-linejoin="round"/></g>
-            <g class="flt i3" transform="translate(615,120)"><rect x="-30" y="-34" width="60" height="68" rx="8" stroke-opacity=".9"/><line x1="-16" y1="-16" x2="16" y2="-16"/><line x1="-16" y1="0" x2="10" y2="0"/><line x1="-16" y1="16" x2="14" y2="16"/></g>
-            <g class="flt i4" transform="translate(710,160)"><circle r="30" stroke-opacity=".9"/><path d="M-8 -12 l20 12 l-20 12 z" fill="#D3FF01" stroke="none"/></g>
-            <g class="flt i5" transform="translate(250,250)"><path d="M-26 18 l26 -40 l26 40 z" stroke-linejoin="round" stroke-opacity=".9"/><line x1="0" y1="-22" x2="0" y2="18"/></g>
-            <g class="flt i6" transform="translate(760,250)"><rect x="-30" y="-22" width="60" height="44" rx="8" stroke-opacity=".9"/><line x1="-18" y1="-8" x2="6" y2="-8"/><line x1="-18" y1="4" x2="14" y2="4"/><circle cx="16" cy="-8" r="4" fill="#D3FF01" stroke="none"/></g>
-          </g>
-          <g fill="#D3FF01">
-            <circle class="tw" cx="360" cy="230" r="3"/><circle class="tw" cx="470" cy="95" r="2.5"/><circle class="tw" cx="560" cy="220" r="3"/>
-            <circle class="tw" cx="660" cy="210" r="2.5"/><circle class="tw" cx="690" cy="95" r="3"/><circle class="tw" cx="320" cy="290" r="2.5"/>
-            <g class="tw" transform="translate(440,250)" stroke="#D3FF01" stroke-width="2"><line x1="-6" y1="0" x2="6" y2="0"/><line x1="0" y1="-6" x2="0" y2="6"/></g>
-            <g class="tw" transform="translate(620,270)" stroke="#D3FF01" stroke-width="2"><line x1="-6" y1="0" x2="6" y2="0"/><line x1="0" y1="-6" x2="0" y2="6"/></g>
-          </g>
-        </g>
-        <ellipse cx="500" cy="400" rx="180" ry="120" fill="#D3FF01" opacity=".18" filter="url(#dsSoft)"/>
-        <g>
-          <rect x="392" y="338" width="216" height="132" rx="8" fill="#0a0d05" stroke="#D3FF01" stroke-width="2" stroke-opacity=".5"/>
-          <rect class="scrn" x="398" y="344" width="204" height="120" rx="5" fill="url(#dsScr)" opacity=".8"/>
-          <g stroke="#0a0d05" stroke-width="3" opacity=".55"><line x1="412" y1="362" x2="500" y2="362"/><line x1="412" y1="378" x2="560" y2="378"/><line x1="412" y1="394" x2="470" y2="394"/><line x1="412" y1="410" x2="540" y2="410"/><line x1="412" y1="426" x2="500" y2="426"/></g>
-        </g>
-        <rect x="430" y="400" width="140" height="150" rx="26" fill="#0a0d05" stroke="#1d2710" stroke-width="2"/>
-        <g>
-          <path d="M442 470 q0 -64 58 -64 q58 0 58 64 z" fill="#11160a" stroke="#D3FF01" stroke-width="1.6" stroke-opacity=".55"/>
-          <path d="M430 470 q14 -40 70 -40 q56 0 70 40" fill="#cfe89a" opacity=".16"/>
-          <ellipse cx="500" cy="392" rx="30" ry="34" fill="#0a0d05" stroke="#D3FF01" stroke-width="1.6" stroke-opacity=".5"/>
-          <path d="M472 384 q28 -26 56 0 q-6 -22 -28 -22 q-22 0 -28 22z" fill="#11160a"/>
-          <path d="M470 392 a30 34 0 0 1 60 0" fill="none" stroke="#D3FF01" stroke-width="2" stroke-opacity=".6" filter="url(#dsGlow)"/>
-        </g>
-        <rect x="150" y="486" width="700" height="16" rx="3" fill="#0c1006" stroke="#D3FF01" stroke-width="1.4" stroke-opacity=".4"/>
-        <rect x="172" y="502" width="14" height="150" fill="#0a0d05"/><rect x="814" y="502" width="14" height="150" fill="#0a0d05"/>
-        <g fill="#0a0d05" stroke="#1d2710" stroke-width="2"><rect x="196" y="540" width="96" height="112" rx="4"/><line x1="196" y1="576" x2="292" y2="576" stroke="#2b3a18"/><line x1="196" y1="612" x2="292" y2="612" stroke="#2b3a18"/></g>
-        <g fill="#0a0d05" stroke="#1d2710" stroke-width="2"><rect x="708" y="540" width="96" height="112" rx="4"/><line x1="708" y1="576" x2="804" y2="576" stroke="#2b3a18"/><line x1="708" y1="612" x2="804" y2="612" stroke="#2b3a18"/></g>
-        <g stroke="#1d2710" stroke-width="3" fill="none"><line x1="500" y1="550" x2="500" y2="600"/><line x1="500" y1="600" x2="455" y2="632"/><line x1="500" y1="600" x2="545" y2="632"/><line x1="500" y1="600" x2="500" y2="640"/></g>
-        <g fill="#0a0d05" stroke="#1d2710" stroke-width="2"><circle cx="453" cy="636" r="9"/><circle cx="547" cy="636" r="9"/><circle cx="500" cy="644" r="9"/></g>
-        <rect x="452" y="492" width="96" height="10" rx="2" fill="#0a0d05" stroke="#D3FF01" stroke-width="1" stroke-opacity=".35"/>
-        <rect x="560" y="494" width="16" height="9" rx="4" fill="#0a0d05" stroke="#D3FF01" stroke-width="1" stroke-opacity=".35"/>
-        <g stroke="#D3FF01" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-opacity=".7">
-          <ellipse cx="250" cy="486" rx="26" ry="6" stroke-width="2"/>
-          <line x1="250" y1="486" x2="262" y2="440"/><line x1="262" y1="440" x2="236" y2="410"/>
-          <path d="M236 410 l-16 18"/><path d="M220 428 l14 10" stroke-width="6"/>
-        </g>
-        <circle cx="226" cy="436" r="10" fill="#D3FF01" opacity=".5" filter="url(#dsGlow)"/>
-        <g transform="translate(770,470)"><rect x="-14" y="0" width="28" height="18" rx="3" fill="#0a0d05" stroke="#D3FF01" stroke-width="1.5" stroke-opacity=".5"/><g stroke="#D3FF01" stroke-width="3" stroke-linecap="round" stroke-opacity=".7"><line x1="0" y1="0" x2="0" y2="-22"/><line x1="0" y1="-6" x2="-10" y2="-20"/><line x1="0" y1="-6" x2="10" y2="-20"/></g></g>
-        <g transform="translate(95,560)" id="dsPlant">
-          <path d="M-30 40 h60 l-8 40 h-44 z" fill="#0a0d05" stroke="#D3FF01" stroke-width="1.6" stroke-opacity=".5"/>
-          <g stroke="#D3FF01" stroke-width="4" fill="none" stroke-linecap="round" stroke-opacity=".75" filter="url(#dsGlow)">
-            <path d="M0 40 C-40 0 -46 -80 -20 -130"/><path d="M0 40 C-8 -20 -6 -90 6 -150"/><path d="M0 40 C30 -10 44 -70 26 -120"/><path d="M0 40 C8 0 26 -40 50 -64"/>
-          </g>
-        </g>
-      </svg>
-      <div class="cap">DESIGNER AT WORK · MOVE YOUR CURSOR</div>
+    <!-- stat boxes under the avatar -->
+    <div class="relative z-20 mt-2 sm:mt-4">
+      <div class="stat-row">
+        <div class="stat-box fade fu"><div class="v">9+</div><div class="l">Experience</div><div class="u">Years</div></div>
+        <div class="stat-box fade fu"><div class="v">618%</div><div class="l">Sales Lift</div><div class="u">Greaves</div></div>
+        <div class="stat-box fade fu"><div class="v">185M</div><div class="l">Reach</div><div class="u">Glance Users</div></div>
+        <div class="stat-box fade fu"><div class="v">B2B</div><div class="l">Enterprise Branding</div><div class="u">Avo Automation</div></div>
+        <div class="stat-box fade fu"><div class="v">15+</div><div class="l">Gov Clients</div><div class="u">Sabha · Now</div></div>
+      </div>
+    </div>
+
+    <!-- tagline -->
+    <p class="fade fu text-center font-light uppercase tracking-wide mx-auto mt-8 max-w-[640px] px-6" style="color:#D7E2EA;opacity:.75;font-size:clamp(.72rem,1.2vw,1.05rem)">Senior Multimedia Designer · Art Director · Creative Director · UI/UX &amp; Product Designer</p>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="block" id="about">
-    <div class="sec-head" id="about-head"></div>
-    <div class="panel about-body reveal" id="about-body"></div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="block" id="experience">
-    <div class="sec-head"><span class="idx">02</span><h2>EXPERIENCE LOG</h2><span class="rule"></span></div>
-    <div class="timeline" id="timeline"></div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="block" id="skills">
-    <div class="sec-head"><span class="idx">03</span><h2>SYSTEMS &amp; LOADOUT</h2><span class="rule"></span></div>
-    <div class="skill-col reveal" style="margin-bottom:30px">
-      <h4>// CORE DISCIPLINES</h4>
-      <div class="chips" id="skills-core"></div>
-    </div>
-    <div class="skill-col reveal">
-      <h4>// TOOLS</h4>
-      <div class="chips" id="skills-tools"></div>
+  <!-- ============ MARQUEE ============ -->
+  <section id="marquee" class="pt-24 sm:pt-32 md:pt-40 pb-10" style="background:transparent;overflow:hidden">
+    <div class="flex flex-col gap-3">
+      <div class="mq-row" id="mqRow1"></div>
+      <div class="mq-row" id="mqRow2"></div>
     </div>
   </section>
 
-  <!-- WORK -->
-  <section class="block" id="work">
-    <div class="sec-head"><span class="idx">04</span><h2>WORK // ARMORY</h2><span class="rule"></span></div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="block" id="contact">
-    <div class="panel bk contact-wrap reveal">
-      <div class="mono" style="margin-bottom:14px"><span class="status-dot"></span>COMMS CHANNEL OPEN</div>
-      <h2>LET'S BUILD</h2>
-      <p>Open to Art Director, Creative Director and Senior UI/UX & Product Design roles — Abu Dhabi or remote.</p>
-      <div class="links" id="contact-links"></div>
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="relative min-h-screen overflow-visible px-5 sm:px-8 md:px-10 pt-24 pb-28">
+    <div class="relative z-20 text-center max-w-[720px] mx-auto flex flex-col items-center gap-8 sm:gap-12">
+      <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight" style="font-size:clamp(3rem,12vw,160px)">About me</h2>
+      <p id="aboutText" class="font-medium leading-relaxed max-w-[640px]" style="color:#D7E2EA;font-size:clamp(1rem,2vw,1.35rem)">Senior multimedia and graphic designer with 9+ years turning creative work into measurable business results across advertising, mobile tech, and EV brands. Specialised in brand identity, motion graphics, UI/UX, and integrated campaign design — end to end in Adobe Creative Cloud and Figma. Trusted with creative for leading UAE government and semi-government clients. I care about design that&apos;s measurable, not just beautiful.</p>
     </div>
+    <div id="fallStack" class="fall-stack"></div>
   </section>
 
-  <footer id="foot"></footer>
+  <!-- ============ SKILL BELT ============ -->
+  <section class="skill-belt" aria-hidden="true">
+    <div class="skill-track" id="skillTrack"></div>
+  </section>
 
-  <script src="js/content-data.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/fx.js"></script>
-  <script>
-    // Studio scene — mouse parallax for depth
-    (function () {
-      var wrap = document.getElementById("dsWrap");
-      if (!wrap) return;
-      var p = document.getElementById("dsParallax"), plant = document.getElementById("dsPlant");
-      wrap.addEventListener("mousemove", function (e) {
-        var r = wrap.getBoundingClientRect();
-        var dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
-        if (p) p.setAttribute("transform", "translate(" + (dx * 26) + "," + (dy * 16) + ")");
-        if (plant) plant.setAttribute("transform", "translate(" + (95 - dx * 14) + ",560)");
-      });
-      wrap.addEventListener("mouseleave", function () {
-        if (p) p.setAttribute("transform", "translate(0,0)");
-        if (plant) plant.setAttribute("transform", "translate(95,560)");
-      });
-    })();
-  </script>
-  <script>
-    // Redirect to the CMS after Netlify Identity login completes
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
-      });
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]" style="background:#FFFFFF">
+    <h2 class="font-black uppercase text-center mb-12 sm:mb-16 md:mb-20" style="color:#0C0C0C;font-size:clamp(3rem,12vw,160px)">Experience</h2>
+    <div class="max-w-5xl mx-auto" id="experienceList"></div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="relative z-10 px-5 sm:px-8 md:px-10 pt-20 pb-32" style="background:transparent">
+    <h2 class="hero-heading font-black uppercase leading-none tracking-tight text-center mb-12 sm:mb-16" style="font-size:clamp(3rem,12vw,160px)">Project</h2>
+    <div id="projectList" class="max-w-6xl mx-auto"></div>
+  </section>
+
+  <!-- ============ MOTION & AI ============ -->
+  <section id="motion" class="px-5 sm:px-8 md:px-10 py-20 sm:py-24" style="background:transparent">
+    <h2 class="hero-heading fade fu font-black uppercase leading-none tracking-tight text-center" style="font-size:clamp(2.5rem,10vw,140px)">Motion &amp; AI</h2>
+    <p class="fade fu text-center font-light uppercase tracking-widest mx-auto mt-4 mb-12" style="color:#D7E2EA;opacity:.6;font-size:clamp(.75rem,1.3vw,1rem)">Motion graphics &amp; AI-built films</p>
+    <!-- final full film (landscape, AI) -->
+    <div class="fade fu max-w-[980px] mx-auto">
+      <video controls preload="none" playsinline poster="assets/video/final-film.jpg" class="w-full rounded-2xl" style="display:block;border:1px solid rgba(211,255,1,.2);background:#000">
+        <source src="assets/video/final-film.mp4" type="video/mp4">
+      </video>
+      <div class="mt-5 font-medium uppercase tracking-widest text-center" style="color:#D7E2EA;font-size:clamp(.85rem,1.6vw,1.2rem)">The AI-Integrated City — A Vision of Future Abu Dhabi</div>
+    </div>
+    <!-- AI-generated square film -->
+    <div class="fade fu max-w-[520px] mx-auto mt-12 sm:mt-16">
+      <video controls preload="none" playsinline poster="assets/video/ai-square.jpg" class="w-full rounded-2xl" style="aspect-ratio:1/1;object-fit:cover;background:#000;border:1px solid rgba(211,255,1,.2)">
+        <source src="assets/video/ai-square.mp4" type="video/mp4">
+      </video>
+      <div class="mt-4 font-medium uppercase tracking-widest text-center" style="color:#D7E2EA;font-size:clamp(.8rem,1.5vw,1.1rem)">Abu Dhabi — A Glance Across Time</div>
+    </div>
+    <!-- vertical reel gallery -->
+    <div id="reelGrid" class="max-w-6xl mx-auto mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5"></div>
+  </section>
+
+  <!-- ============ BEHANCE BOX ============ -->
+  <section class="px-5 sm:px-8 md:px-10 pb-16" style="background:transparent">
+    <a href="https://www.behance.net/bonslee" target="_blank" rel="noopener" class="block max-w-6xl mx-auto rounded-[30px] border-2 p-8 sm:p-12 text-center transition-colors hover:bg-[#D3FF01]/5" style="border-color:#D3FF01">
+      <div class="font-medium uppercase tracking-widest" style="color:#D3FF01;font-size:clamp(1.1rem,2.6vw,2rem)">See all my work on Behance ↗</div>
+      <div class="font-light uppercase tracking-widest mt-2" style="color:#D7E2EA;opacity:.6;font-size:clamp(.75rem,1.2vw,1rem)">behance.net/bonslee</div>
+    </a>
+  </section>
+
+  <!-- ============ SERVICES CAROUSEL ============ -->
+  <section class="py-10 sm:py-14" style="background:transparent;overflow:hidden">
+    <div class="svc-track" id="svcTrack"></div>
+  </section>
+
+  <!-- ============ CONTACT FOOTER ============ -->
+  <footer id="contact" class="px-6 md:px-10 py-20 text-center" style="background:transparent;color:#D7E2EA">
+    <p class="font-light uppercase tracking-widest mb-6" style="font-size:clamp(.8rem,1.4vw,1.1rem);opacity:.7">Open to Art Director, Creative Director &amp; Senior UI/UX roles — Abu Dhabi or remote</p>
+    <a href="mailto:bonslee.shaji@gmail.com" class="btn-contact inline-block rounded-full text-white font-medium uppercase tracking-widest px-10 py-4 text-sm md:text-base">Contact Me</a>
+    <div class="mt-8 flex justify-center gap-6 text-sm uppercase tracking-widest" style="opacity:.6">
+      <a href="https://www.behance.net/bonslee" target="_blank" rel="noopener" class="hover:opacity-100">Behance</a>
+      <a href="https://www.linkedin.com/in/bonslee-s-chakkala-3a0080b2" target="_blank" rel="noopener" class="hover:opacity-100">LinkedIn</a>
+      <span>© <span id="yr"></span> Bonslee S Chakkala</span>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+/* ---- preloader: hold >= 4s, fade after load ---- */
+(function(){
+  var pre=document.getElementById('preloader'); if(!pre) return;
+  var MIN_MS=4000, start=Date.now();
+  function hide(){ pre.classList.add('hidden'); }
+  function finish(){ setTimeout(hide, Math.max(0, MIN_MS-(Date.now()-start))); }
+  if(document.readyState==='complete') finish(); else window.addEventListener('load', finish);
+})();
+
+const A = "assets/work/";
+const works = [
+  "zest-running.jpg","gaming-1.jpg","alain-1.jpg","exeed-oldcity.jpg","exeed-1.jpg",
+  "zest-cycling.jpg","gaming-2.jpg","busstop.jpg","medical-1.jpg","scene-2.jpg",
+  "zest-yoga.jpg","gaming-3.jpg","signage.jpg","realestate-1.jpg","future.jpg",
+  "billboard.jpg","cbrn.jpg","eid-sound.jpg"
+].map(s => A + s);
+
+/* ---- marquee rows (tripled) ---- */
+function fillRow(el, imgs){ const set=[...imgs,...imgs,...imgs]; el.innerHTML = set.map(u=>`<img class="mq-tile" loading="lazy" src="${u}" alt="">`).join(""); }
+fillRow(document.getElementById("mqRow1"), works.filter((_,i)=>i%2===0));
+fillRow(document.getElementById("mqRow2"), works.filter((_,i)=>i%2===1));
+/* marquee now auto-scrolls via CSS (seamless loop, no left-gap) */
+
+/* ---- services ---- */
+const services=[
+  ["01","Brand Identity","Cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable presence."],
+  ["02","Motion Graphics","Dynamic animation and motion design that adds energy and storytelling to brands, products and events."],
+  ["03","AI-Assisted Creative","AI-driven concepts, imagery and film — blending generative tools with hands-on craft for fresh, scalable visuals."],
+  ["04","UI/UX Design","Clean, modern, conversion-focused interfaces and design systems with attention to layout and user experience."],
+  ["05","Art Direction","End-to-end creative direction for campaigns, events and content — keeping work on-brand and impactful."],
+  ["06","Video Editing","Editing and post for social, events and campaigns — pacing, colour and sound that keep viewers watching."],
+  ["07","Web Design","Responsive websites and landing pages built in Figma, balancing aesthetics, performance and a frictionless journey."],
+  ["08","Design Systems","Reusable component libraries and brand guidelines that keep teams consistent and shipping fast."],
+  ["09","Campaign & Social","Integrated campaign and social media design that turns brand goals into scroll-stopping, on-message creative."]
+];
+/* services -> auto-running carousel of cards */
+const svcCards = services.map(s=>`<div class="svc-card"><h4>${s[1]}</h4><p>${s[2]}</p></div>`).join("");
+document.getElementById("svcTrack").innerHTML = svcCards + svcCards;
+
+/* experience timeline (replaces the services section) */
+const experience=[
+  ["Dec 2024 – Present","Senior Multimedia Designer","Sabha Advertising — Abu Dhabi, UAE","Lead branding, motion, video and UI/UX for major UAE government and semi-government clients — Abu Dhabi Police, Civil Defence, SEHA, ADNOC, Public Prosecution, Abu Dhabi Chamber and Abu Dhabi University. End-to-end creative for high-profile events, plus responsive websites and design systems in Figma."],
+  ["Jan 2022 – Jul 2025","Lead Creative Manager","Greaves Electric Mobility — Bengaluru, India","Directed branding and campaign design that drove a 618% increase in sales and 245% growth in social reach. Owned the end-to-end creative system across the product portfolio and mentored designers."],
+  ["Sep 2020 – Jan 2022","Executive Graphic Designer","Avo Automation — Bengaluru, India","Designed social campaigns and branding for B2B and enterprise technology audiences, maintaining a cohesive visual identity across platforms with cross-functional teams."],
+  ["Feb 2017 – Sep 2020","Creative Designer","InMobi — Bengaluru, India","Produced 30–50 high-quality ad creatives daily for premium clients including Samsung and Mi. Contributed creative to Glance, which scaled to 185M+ active users across Asia. Trained junior designers and ran QC."],
+  ["Mar 2016 – Sep 2020","Freelance Graphic Designer","Self-employed — Kerala, India","Branding, video editing, motion graphics, social and print for clients across hospitality, construction, architecture and automotive."],
+  ["Dec 2016 – Feb 2017","Graphic Designer","OZAP Creative Labs — Bengaluru, India","Created branding and event design materials that elevated brand presence at events."]
+];
+document.getElementById("experienceList").innerHTML = experience.map((e,i)=>`
+  <div class="fade fu grid md:grid-cols-[200px_1fr] gap-1 md:gap-8 py-8 sm:py-10" style="border-top:1px solid rgba(12,12,12,.15);${i===experience.length-1?'border-bottom:1px solid rgba(12,12,12,.15);':''}transition-delay:${i*0.07}s">
+    <div class="font-medium uppercase tracking-wide" style="color:#0C0C0C;opacity:.55;font-size:clamp(.8rem,1.3vw,1rem)">${e[0]}</div>
+    <div>
+      <h3 class="font-medium uppercase" style="color:#0C0C0C;font-size:clamp(1.1rem,2.3vw,1.9rem)">${e[1]} <span style="opacity:.5;font-weight:300;text-transform:none">// ${e[2]}</span></h3>
+      <p class="font-light leading-relaxed max-w-3xl mt-2" style="color:#0C0C0C;opacity:.65;font-size:clamp(.85rem,1.5vw,1.15rem)">${e[3]}</p>
+    </div>
+  </div>`).join("");
+
+/* ---- projects ---- */
+const projects=[
+  { n:"01", cat:"Brand · UI/UX", name:"Zest — Fitness App Identity", link:"https://www.behance.net/gallery/240921309/ZEST-Fitness-App-Social-Media-Feature-Showcase",
+    a:A+"zest-social-1.jpg", b:A+"zest-social-2.jpg", c:A+"zest-social-3.jpg" },
+  { n:"02", cat:"Environmental · Branding", name:"Al Ain Housing Exhibition", link:"https://www.behance.net/gallery/234338753/Al-Ain-Housing-Exhibition-Branding",
+    a:A+"alain-concept.jpg", b:A+"alain-positioning.jpg", c:A+"alain-social.jpg" },
+  { n:"03", cat:"Key Art · Campaign", name:"Abu Dhabi — Gaming Campaign", link:"https://www.behance.net/gallery/240209175/Gaming-Gear-Visual-Series",
+    a:A+"gaming-1.jpg", b:A+"gaming-3.jpg", c:A+"gaming-2.jpg" },
+  { n:"04", cat:"Government · Branding", name:"Zakat on Dates Seminar — Branding", link:"https://www.behance.net/gallery/234349187/Zakat-on-dates-seminar-Branding",
+    a:A+"zakat-busstop.jpg", b:A+"zakat-rollup.jpg", c:A+"zakat-social.jpg" },
+  { n:"05", cat:"Social · Fintech", name:"Move Money — Fintech Campaign", link:"https://www.behance.net/gallery/240890387/Money-Transfer-Campaign-Speed-Security-Simplicity",
+    a:A+"money-1.jpg", b:A+"money-2.jpg", c:A+"money-3.jpg" },
+  { n:"06", cat:"Social · Healthcare", name:"FAST — Health Awareness", link:"https://www.behance.net/gallery/240194321/Your-Body-Speaks-Medical-Awareness-Social-Media-Posts",
+    a:A+"medical-1.jpg", b:A+"medical-2.jpg", c:A+"medical-3.jpg" },
+  { n:"07", cat:"Social · Real Estate", name:"Smart Living — Real Estate", link:"https://www.behance.net/gallery/240708801/Smart-Living-A-Futuristic-Real-Estate-Visual-Series",
+    a:A+"realestate-1.jpg", b:A+"realestate-2.jpg", c:A+"realestate-3.jpg" },
+  { n:"08", cat:"Storyboard · 3D Key Art", name:"Abu Dhabi — Cinematic Key Art", link:"https://www.behance.net/bonslee",
+    a:A+"exeed-oldcity.jpg", b:A+"exeed-1.jpg", c:A+"future.jpg" }
+];
+document.getElementById("projectList").innerHTML = projects.map((p,i)=>`
+  <div class="proj stick top-24 md:top-32" style="top:${96 + i*28}px;margin-bottom:2rem">
+    <div class="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 p-4 sm:p-6 md:p-8" style="border-color:#D7E2EA;background:#0C0C0C">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4 sm:mb-6">
+        <div class="flex items-center gap-4 sm:gap-6">
+          <span class="hero-heading font-black leading-none" style="font-size:clamp(2.4rem,8vw,110px)">${p.n}</span>
+          <div>
+            <div class="uppercase tracking-widest font-light" style="color:#D7E2EA;opacity:.6;font-size:clamp(.7rem,1.2vw,.95rem)">${p.cat}</div>
+            <div class="font-medium uppercase" style="color:#D7E2EA;font-size:clamp(1rem,2.4vw,1.9rem)">${p.name}</div>
+          </div>
+        </div>
+        <a href="${p.link}" target="_blank" rel="noopener" class="rounded-full border-2 font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base transition-colors hover:bg-[#D7E2EA]/10" style="border-color:#D7E2EA;color:#D7E2EA">Live Project</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+        <img src="${p.a}" loading="lazy" class="w-full object-cover rounded-[28px] sm:rounded-[34px]" style="aspect-ratio:1/1" alt="">
+        <img src="${p.b}" loading="lazy" class="w-full object-cover rounded-[28px] sm:rounded-[34px]" style="aspect-ratio:1/1" alt="">
+        <img src="${p.c}" loading="lazy" class="w-full object-cover rounded-[28px] sm:rounded-[34px]" style="aspect-ratio:1/1" alt="">
+      </div>
+    </div>
+  </div>`).join("");
+
+/* ---- motion reel gallery (vertical) ---- */
+const reels=[
+  ["assets/video/reel-1.mp4","assets/video/reel-1.jpg","CBRN — Strategic Communication · 01"],
+  ["assets/video/reel-day3.mp4","assets/video/reel-day3.jpg","CBRN — Strategic Communication · 02"],
+  ["assets/video/reel-motion.mp4","assets/video/reel-motion.jpg","CBRN — Strategic Communication · 03"]
+];
+const reelGrid=document.getElementById("reelGrid");
+if(reelGrid){ reelGrid.innerHTML = reels.map(r=>`
+  <div class="fade fu">
+    <video controls preload="none" playsinline poster="${r[1]}" class="w-full rounded-xl" style="aspect-ratio:9/16;object-fit:cover;background:#000;border:1px solid rgba(211,255,1,.18)">
+      <source src="${r[0]}" type="video/mp4">
+    </video>
+    <div class="mt-2 font-medium uppercase tracking-widest text-center" style="color:#D7E2EA;opacity:.7;font-size:clamp(.65rem,1.1vw,.85rem)">${r[2]}</div>
+  </div>`).join(""); }
+
+/* ---- sticky card scale on scroll ---- */
+/* ---- skill belt (running ticker) ---- */
+const skills=["Brand Identity","Motion Graphics","UI/UX","Product Design","Art Direction","Campaign Design","Design Systems","AI-Assisted Creative","Video Editing","Web Design"];
+const skillTrack=document.getElementById("skillTrack");
+if(skillTrack){ const row=skills.map((s,i)=>`<span class="sk${i%2?' alt':''}">${s}</span><span class="star">✦</span>`).join(""); skillTrack.innerHTML=row+row; }
+
+/* ---- sticky card stacking: clean overlap, no shrink artifact ---- */
+/* cards pin (position:sticky) and the next slides up over the previous — the scale
+   pinch was removed because it pulled covered cards into a corner, leaving black gaps. */
+
+/* ---- falling image stack over the About area ---- */
+(function(){
+  const stack=document.getElementById('fallStack'); if(!stack) return;
+  const imgs=[0,1,4,6,8,9,10,11,12,13].map(i=>works[i]);
+  // Cards start above the screen and fall in from the top: LEFT pile (5) one by one, then RIGHT pile (5).
+  const pos=[
+    {l:3,  t:26, r:-9, z:2, d:0.00},
+    {l:15, t:30, r:6,  z:1, d:0.22},
+    {l:7,  t:45, r:-5, z:4, d:0.44},
+    {l:18, t:49, r:9,  z:3, d:0.66},
+    {l:11, t:63, r:-8, z:5, d:0.88},
+    {l:60, t:26, r:7,  z:2, d:1.16},
+    {l:72, t:30, r:-6, z:1, d:1.38},
+    {l:84, t:28, r:9,  z:3, d:1.60},
+    {l:66, t:47, r:-8, z:4, d:1.82},
+    {l:78, t:51, r:5,  z:5, d:2.04}
+  ];
+  stack.innerHTML=imgs.map((u,i)=>{const p=pos[i]||pos[0]; const fd=(6+Math.random()*4).toFixed(1); const fdl=(Math.random()*2.5).toFixed(1);
+    return `<div class="fall-card" style="left:${p.l}%;top:${p.t}%;z-index:${p.z}"><div class="fc-fall" style="--r:${p.r}deg;--fdur:${fd}s;--fdelay:${fdl}s;transition-delay:${p.d}s"><img src="${u}" loading="lazy" alt=""></div></div>`;}).join("");
+  const fio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){stack.classList.add('fall');setTimeout(()=>{stack.querySelectorAll('.fall-card').forEach(c=>c.classList.add('floating'));},3500);fio.disconnect();}});},{threshold:.18});
+  fio.observe(document.getElementById('about'));
+  /* cursor repel: cards glide away when the pointer comes near, then settle back */
+  if(!matchMedia("(pointer:coarse)").matches){
+    const fcards=[...stack.querySelectorAll('.fall-card')]; let mx=-9999,my=-9999,raf=false;
+    function apply(){ raf=false; const R=150;
+      fcards.forEach(c=>{ const r=c.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height/2; const dx=cx-mx, dy=cy-my; const d=Math.hypot(dx,dy);
+        if(d<R){ const f=1-d/R, ux=dx/(d||1), uy=dy/(d||1), p=30*f; c.style.transform='translate('+(ux*p).toFixed(1)+'px,'+(uy*p).toFixed(1)+'px) scale('+(1+0.05*f).toFixed(3)+')'; }
+        else if(c.style.transform){ c.style.transform=''; } });
     }
-  </script>
+    window.addEventListener('pointermove',e=>{ mx=e.clientX; my=e.clientY; if(!raf){ raf=true; requestAnimationFrame(apply); } },{passive:true});
+    document.addEventListener('mouseleave',()=>{ mx=my=-9999; fcards.forEach(c=>c.style.transform=''); });
+  }
+})();
+
+/* ---- fade-in (whileInView) ---- */
+const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target);} }); }, {rootMargin:"50px", threshold:0});
+document.querySelectorAll(".fade").forEach((el,i)=>{ if(!el.style.transitionDelay){} io.observe(el); });
+/* hero fades fire immediately */
+requestAnimationFrame(()=>{ document.querySelectorAll("section.h-screen .fade").forEach(el=>el.classList.add("show")); });
+
+/* ---- magnet (hero artwork) ---- */
+(function(){
+  const m=document.getElementById("magnet"), inner=document.getElementById("magnetInner");
+  if(matchMedia("(pointer:coarse)").matches) return;
+  const pad=150, strength=3;
+  window.addEventListener("mousemove",(e)=>{
+    const r=m.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height/2;
+    const dx=e.clientX-cx, dy=e.clientY-cy;
+    if(Math.abs(dx)<r.width/2+pad && Math.abs(dy)<r.height/2+pad){
+      inner.style.transition="transform 0.3s ease-out";
+      inner.style.transform=`translate3d(${dx/strength}px,${dy/strength}px,0)`;
+    } else { inner.style.transition="transform 0.6s ease-in-out"; inner.style.transform="translate3d(0,0,0)"; }
+  });
+})();
+
+/* ---- animated text (char reveal on scroll) ---- */
+(function(){
+  const el=document.getElementById("aboutText"); if(!el) return;
+  const text=el.textContent; el.textContent="";
+  const spans=[];
+  for(const c of text){ const s=document.createElement("span"); s.className="ch"; s.style.opacity=".2"; s.textContent=c; el.appendChild(s); spans.push(s); }
+  function upd(){
+    const r=el.getBoundingClientRect(); const vh=window.innerHeight;
+    // progress: 0 when top at 80% vh, 1 when bottom at 20% vh
+    const start=vh*0.8, end=vh*0.2;
+    const prog=Math.max(0,Math.min(1,(start - r.top)/((start-end)+r.height)));
+    const lead=prog*spans.length;
+    spans.forEach((s,i)=>{ s.style.opacity = i < lead ? "1" : (i < lead+6 ? (0.2+0.8*Math.max(0,(lead-i)/6)).toFixed(2) : ".2"); });
+  }
+  window.addEventListener("scroll",upd,{passive:true}); window.addEventListener("resize",upd); upd();
+})();
+
+/* ---- realistic water ripple background (WebGL refraction) ---- */
+(function(){
+  if(matchMedia("(pointer:coarse)").matches) return; // skip touch devices
+  function init(){
+    if(!window.jQuery || !jQuery.fn || !jQuery.fn.ripples) return;
+    var $w=jQuery("#waterbg");
+    try{ $w.ripples({ resolution:512, dropRadius:18, perturbance:0.028, interactive:false }); }
+    catch(e){ return; } // WebGL/float-texture unsupported -> stay on static bg
+    // ambient drops so the surface is gently alive
+    setInterval(function(){ try{ $w.ripples("drop", Math.random()*innerWidth, Math.random()*innerHeight, 14, 0.012); }catch(_){} }, 2600);
+    var lx=0,ly=0,lt=0;
+    window.addEventListener("pointermove",function(e){ var t=performance.now(),dx=e.clientX-lx,dy=e.clientY-ly; if(t-lt>40 && dx*dx+dy*dy>90){ try{$w.ripples("drop",e.clientX,e.clientY,15,0.02);}catch(_){} lt=t; lx=e.clientX; ly=e.clientY; } },{passive:true});
+    window.addEventListener("pointerdown",function(e){ try{$w.ripples("drop",e.clientX,e.clientY,30,0.07);}catch(_){} },{passive:true});
+  }
+  if(document.readyState!=="loading") init(); else window.addEventListener("DOMContentLoaded",init);
+})();
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
